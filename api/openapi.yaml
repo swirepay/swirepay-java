@@ -1,0 +1,1650 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: apiteam@swirepay.com
+  description: |-
+    Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded
+    request bodies, return JSON-encoded responses, and use standard HTTP response
+    codes, authentication, and verbs. You can use the Swirepay API in test mode, which
+    does not affect your live data or interact with the banking networks. The `API
+    key` you use to authenticate the request determines whether the request is live
+    mode or test mode.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://policies.swirepay.com
+  title: Swirepay Payment API
+  version: 1.0.0
+externalDocs:
+  description: Learn more with Swirepay guide
+  url: https://guide.swirepay.com
+servers:
+- url: https://api.swirepay.com/v1
+tags:
+- description: Use API Keys to add customers
+  externalDocs:
+    description: Find out more
+    url: http://guide.swirepay.com
+  name: Customer
+- description: Use API Keys to create payment methods
+  externalDocs:
+    description: Find out more
+    url: http://guide.swirepay.com
+  name: Payment Method
+- description: Use API Keys to create payment session
+  externalDocs:
+    description: Find out more
+    url: http://guide.swirepay.com
+  name: Payment Session
+- description: How to leverage short lived Bearer Token
+  externalDocs:
+    description: Find out more
+    url: http://guide.swirepay.com
+  name: Token Authentication
+paths:
+  /balance:
+    get:
+      description: Get balance
+      operationId: getBalance
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get balance
+      tags:
+      - Balance
+      x-accepts: application/json
+  /category:
+    get:
+      description: Get category
+      operationId: getCategory
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+          description: successful operation
+      summary: Get category
+      tags:
+      - Category
+      x-accepts: application/json
+  /country:
+    get:
+      description: Get country
+      operationId: getCountry
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountryResponse'
+          description: successful operation
+      summary: Get country
+      tags:
+      - Country
+      x-accepts: application/json
+  /customer:
+    get:
+      description: Get customers
+      operationId: getCustomer
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get customers
+      tags:
+      - Customer
+      x-accepts: application/json
+    post:
+      description: Adds a customer to an account
+      operationId: addCustomer
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequest'
+        description: Customer object that needs to be added to the account
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Add a customer
+      tags:
+      - Customer
+      x-codegen-request-body-name: body
+      x-contentType: application/json
+      x-accepts: application/json
+  /currency:
+    get:
+      description: Get currency
+      operationId: getCurrency
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get currency
+      tags:
+      - Currency
+      x-accepts: application/json
+  /dispute:
+    get:
+      description: Get dispute
+      operationId: getDispute
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisputeResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get dispute
+      tags:
+      - Dispute
+      x-accepts: application/json
+  /event:
+    get:
+      description: Get event
+      operationId: getEvent
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get event
+      tags:
+      - Event
+      x-accepts: application/json
+  /invoice:
+    get:
+      description: Get invoice
+      operationId: getInvoice
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get invoice
+      tags:
+      - Invoice
+      x-accepts: application/json
+  /membership:
+    get:
+      description: Get membership
+      operationId: getMembership
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MembershipResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get membership
+      tags:
+      - Membership
+      x-accepts: application/json
+  /payment-button:
+    get:
+      description: Get payment button
+      operationId: getPaymentButton
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentButtonResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get payment button
+      tags:
+      - Payment Button
+      x-accepts: application/json
+  /payment-link:
+    get:
+      description: Get payment link
+      operationId: getPaymentLink
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentLinkResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get payment link
+      tags:
+      - Payment Link
+      x-accepts: application/json
+  /payment:
+    get:
+      description: Get payment
+      operationId: getPayment
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get payment
+      tags:
+      - Payment
+      x-accepts: application/json
+  /payment-method:
+    get:
+      description: Get payment methods
+      operationId: getPaymentMethod
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethodResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get payment methods
+      tags:
+      - Payment Method
+      x-accepts: application/json
+    post:
+      description: Adds a payment method to an account
+      operationId: addPaymentMethod
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentMethodRequest'
+        description: Payment method object that needs to be added to the account
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethodResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Add a payment method
+      tags:
+      - Payment Method
+      x-codegen-request-body-name: body
+      x-contentType: application/json
+      x-accepts: application/json
+  /payment-session:
+    get:
+      description: Get payment sessions
+      operationId: getPaymentSession
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentSessionResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get payment sessions
+      tags:
+      - Payment Session
+      x-accepts: application/json
+  /payout:
+    get:
+      description: Get payout
+      operationId: getPayout
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutResponse'
+          description: successful operation
+      summary: Get payout
+      tags:
+      - Payout
+      x-accepts: application/json
+  /plan:
+    get:
+      description: Get plan
+      operationId: getPlan
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get plan
+      tags:
+      - Plan
+      x-accepts: application/json
+  /product:
+    get:
+      description: Get product
+      operationId: getProduct
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get product
+      tags:
+      - Product
+      x-accepts: application/json
+  /public-key:
+    get:
+      description: Get public key
+      operationId: getPublicKey
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicKeyResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get public key
+      tags:
+      - Public Key
+      x-accepts: application/json
+  /refund:
+    get:
+      description: Get refund
+      operationId: getRefund
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefundResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get refund
+      tags:
+      - Refund
+      x-accepts: application/json
+  /reminder:
+    get:
+      description: Get reminder
+      operationId: getReminder
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReminderResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get reminder
+      tags:
+      - Reminder
+      x-accepts: application/json
+  /report:
+    get:
+      description: Get report
+      operationId: getReport
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get report
+      tags:
+      - Report
+      x-accepts: application/json
+  /setup-session:
+    get:
+      description: Get setup session
+      operationId: getSetupSession
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetupSessionResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get setup session
+      tags:
+      - Setup Session
+      x-accepts: application/json
+  /subscription:
+    get:
+      description: Get subscription
+      operationId: getSubscription
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get subscription
+      tags:
+      - Setup Subscription
+      x-accepts: application/json
+  /terminal:
+    get:
+      description: Get terminal
+      operationId: getTerminal
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerminalResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get terminal
+      tags:
+      - Terminal
+      x-accepts: application/json
+  /transaction:
+    get:
+      description: Get transaction
+      operationId: getTransaction
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+          description: successful operation
+      security:
+      - api_key: []
+      summary: Get transaction
+      tags:
+      - Transaction
+      x-accepts: application/json
+components:
+  schemas:
+    CustomerRequest:
+      example:
+        phoneNumber: "18000000000"
+        name: Sample Customer
+        email: sample-customer@example.com
+      properties:
+        email:
+          example: sample-customer@example.com
+          type: string
+        name:
+          example: Sample Customer
+          type: string
+        phoneNumber:
+          example: "18000000000"
+          type: string
+      type: object
+    CustomerResponse:
+      example:
+        createdAt: 2020-09-25T03:43:13.000Z
+        gid: customer-16b90f1c2ecc484c899f2720c557f5a7
+        phoneNumber: "18000000000"
+        name: Sample Customer
+        email: sample-customer@example.com
+        updatedAt: 2020-09-25T03:43:13.000Z
+      properties:
+        gid:
+          example: customer-16b90f1c2ecc484c899f2720c557f5a7
+          type: string
+        email:
+          example: sample-customer@example.com
+          type: string
+        name:
+          example: Sample Customer
+          type: string
+        phoneNumber:
+          example: "18000000000"
+          type: string
+        createdAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+        updatedAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+      type: object
+    UserResponse:
+      properties:
+        gid:
+          example: user-16b90f1c2ecc484c899f2720c557f5a7
+          type: string
+        givenName:
+          type: string
+        familName:
+          type: string
+        fullName:
+          type: string
+        isEmailConfirmed:
+          type: string
+        phoneNumber:
+          type: string
+        isTwoFactorEnabled:
+          example: false
+          type: boolean
+        lastLogin:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+        active:
+          example: true
+          type: boolean
+        deleted:
+          example: false
+          type: boolean
+        createdAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+        updatedAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+      type: object
+    CardRequest:
+      example:
+        number: "4242424242424242"
+        cvv: "123"
+        scheme: VISA
+        name: Sample Customer
+        expiryMonth: "08"
+        expiryYear: "2024"
+      properties:
+        name:
+          example: Sample Customer
+          type: string
+        number:
+          example: "4242424242424242"
+          type: string
+        scheme:
+          example: VISA
+          type: string
+        cvv:
+          example: "123"
+          type: string
+        expiryMonth:
+          example: "08"
+          type: string
+        expiryYear:
+          example: "2024"
+          type: string
+      type: object
+    PaymentMethodRequest:
+      example:
+        phoneNumber: "18000000000"
+        type: CARD
+        card:
+          content:
+          - number: "4242424242424242"
+            cvv: "123"
+            scheme: VISA
+            name: Sample Customer
+            expiryMonth: "08"
+            expiryYear: "2024"
+          - number: "4242424242424242"
+            cvv: "123"
+            scheme: VISA
+            name: Sample Customer
+            expiryMonth: "08"
+            expiryYear: "2024"
+      properties:
+        type:
+          example: CARD
+          type: string
+        card:
+          $ref: '#/components/schemas/PaymentMethodRequest_card'
+        phoneNumber:
+          example: "18000000000"
+          type: string
+      type: object
+    PaymentMethodResponse:
+      example:
+        createdAt: 2020-09-25T03:43:13.000Z
+        gid: customer-16b90f1c2ecc484c899f2720c557f5a7
+        updatedAt: 2020-09-25T03:43:13.000Z
+      properties:
+        gid:
+          example: customer-16b90f1c2ecc484c899f2720c557f5a7
+          type: string
+        createdAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+        updatedAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+      type: object
+    PaymentSessionResponse:
+      example:
+        createdAt: 2020-09-25T03:43:13.000Z
+        gid: paymentsession-16b90f1c2ecc484c899f2720c557f5a7
+        updatedAt: 2020-09-25T03:43:13.000Z
+      properties:
+        gid:
+          example: paymentsession-16b90f1c2ecc484c899f2720c557f5a7
+          type: string
+        createdAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+        updatedAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+      type: object
+    BalanceResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/BalanceResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    Balance:
+      example:
+        createdAt: 2020-09-25T03:43:13.000Z
+        gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+        updatedAt: 2020-09-25T03:43:13.000Z
+      properties:
+        gid:
+          example: balance-16b90f1c2ecc484c899f2720c557f5a7
+          type: string
+        createdAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+        updatedAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+      type: object
+    DefaultResponse:
+      example:
+        createdAt: 2020-09-25T03:43:13.000Z
+        gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+        updatedAt: 2020-09-25T03:43:13.000Z
+      properties:
+        gid:
+          example: balance-16b90f1c2ecc484c899f2720c557f5a7
+          type: string
+        createdAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+        updatedAt:
+          example: 2020-09-25T03:43:13.000Z
+          type: string
+      type: object
+    CategoryResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    CountryResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    CurrencyResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    DisputeResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    EventResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    InvoiceResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    MembershipResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    PaymentButtonResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    PaymentLinkResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    PaymentResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    PayoutResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    PlanResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    ProductResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    PublicKeyResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    RefundResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    ReminderResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    ReportResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    SetupSessionResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    SubscriptionResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    TerminalResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    TransactionResponse:
+      example:
+        message: OK
+        entity:
+          content:
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+          - createdAt: 2020-09-25T03:43:13.000Z
+            gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+            updatedAt: 2020-09-25T03:43:13.000Z
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        entity:
+          $ref: '#/components/schemas/CategoryResponse_entity'
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+      type: object
+    PaymentMethodRequest_card:
+      example:
+        content:
+        - number: "4242424242424242"
+          cvv: "123"
+          scheme: VISA
+          name: Sample Customer
+          expiryMonth: "08"
+          expiryYear: "2024"
+        - number: "4242424242424242"
+          cvv: "123"
+          scheme: VISA
+          name: Sample Customer
+          expiryMonth: "08"
+          expiryYear: "2024"
+      properties:
+        content:
+          items:
+            $ref: '#/components/schemas/CardRequest'
+          type: array
+      type: object
+    BalanceResponse_entity:
+      example:
+        content:
+        - createdAt: 2020-09-25T03:43:13.000Z
+          gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+          updatedAt: 2020-09-25T03:43:13.000Z
+        - createdAt: 2020-09-25T03:43:13.000Z
+          gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+          updatedAt: 2020-09-25T03:43:13.000Z
+      properties:
+        content:
+          items:
+            $ref: '#/components/schemas/Balance'
+          type: array
+      type: object
+    CategoryResponse_entity:
+      example:
+        content:
+        - createdAt: 2020-09-25T03:43:13.000Z
+          gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+          updatedAt: 2020-09-25T03:43:13.000Z
+        - createdAt: 2020-09-25T03:43:13.000Z
+          gid: balance-16b90f1c2ecc484c899f2720c557f5a7
+          updatedAt: 2020-09-25T03:43:13.000Z
+      properties:
+        content:
+          items:
+            $ref: '#/components/schemas/DefaultResponse'
+          type: array
+      type: object
+  securitySchemes:
+    api_key:
+      description: |-
+        Developer keys are provided for each Swirepay account. Login to
+        Swirepay and check under the Developer menu to find your key. Do not share
+        or distribute your secret keys outside your application. Example key: `sk_test_hB37G8ruWLyb7dMzMZABFwpsFbpHP9Ea`.
+      in: header
+      name: x-api-key
+      type: apiKey
+
