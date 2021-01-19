@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SetupSessionResponse.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("SetupSessionResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-19T06:16:38.922Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-19T06:20:49.019Z[Etc/UTC]")
 public class SetupSessionResponse {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
