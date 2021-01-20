@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CategoryResponseEntity.JSON_PROPERTY_CONTENT
 })
 @JsonTypeName("CategoryResponse_entity")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-19T06:20:49.019Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-20T12:32:40.495Z[Etc/UTC]")
 public class CategoryResponseEntity {
   public static final String JSON_PROPERTY_CONTENT = "content";
   private List<DefaultResponse> content = null;

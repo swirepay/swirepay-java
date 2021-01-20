@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DefaultResponse.JSON_PROPERTY_UPDATED_AT
 })
 @JsonTypeName("DefaultResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-19T06:20:49.019Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-20T12:32:40.495Z[Etc/UTC]")
 public class DefaultResponse {
   public static final String JSON_PROPERTY_GID = "gid";
   private String gid;

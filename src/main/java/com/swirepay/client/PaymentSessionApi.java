@@ -25,7 +25,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-19T06:20:49.019Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-20T12:32:40.495Z[Etc/UTC]")
 @Component("com.swirepay.client.PaymentSessionApi")
 public class PaymentSessionApi {
     private ApiClient apiClient;

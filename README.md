@@ -4,7 +4,7 @@ Swirepay Payment API
 
 - API version: 1.0.0
 
-- Build date: 2021-01-19T06:20:49.019Z[Etc/UTC]
+- Build date: 2021-01-20T12:32:40.495Z[Etc/UTC]
 
 Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded
 request bodies, return JSON-encoded responses, and use standard HTTP response
