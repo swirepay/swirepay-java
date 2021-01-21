@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CardRequest.JSON_PROPERTY_EXPIRY_YEAR
 })
 @JsonTypeName("CardRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-21T08:40:13.535Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-21T08:44:56.593Z[Etc/UTC]")
 public class CardRequest {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

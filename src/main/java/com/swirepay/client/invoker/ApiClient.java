@@ -52,7 +52,7 @@ import java.time.OffsetDateTime;
 import com.swirepay.client.invoker.auth.Authentication;
 import com.swirepay.client.invoker.auth.ApiKeyAuth;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-21T08:40:13.535Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-21T08:44:56.593Z[Etc/UTC]")
 @Component("com.swirepay.client.invoker.ApiClient")
 public class ApiClient extends JavaTimeFormatter {
     public enum CollectionFormat {
