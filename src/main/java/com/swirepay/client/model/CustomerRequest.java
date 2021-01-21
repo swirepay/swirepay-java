@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CustomerRequest.JSON_PROPERTY_PHONE_NUMBER
 })
 @JsonTypeName("CustomerRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-20T12:32:40.495Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-21T07:23:21.979Z[Etc/UTC]")
 public class CustomerRequest {
   public static final String JSON_PROPERTY_EMAIL = "email";
   private String email;
