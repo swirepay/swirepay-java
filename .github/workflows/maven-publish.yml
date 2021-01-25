@@ -28,6 +28,7 @@ jobs:
     - run: mkdir -p ~/.m2
     - run: cp -p settings.xml ~/.m2/settings.xml
     - run: pwd
+    - run: ls -ltra
     - run: ls -ltr ~/.m2/
     - run: mvn clean install
     - run: ls -ltr ~/.m2
