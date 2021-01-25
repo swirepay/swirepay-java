@@ -26,27 +26,7 @@ jobs:
         java-version: 1.8
         
     - run: mkdir -p ~/.m2
-    - run: echo "<settings>
-                <servers>
-                    <server>
-                        <id>ossrh</id>
-                        <username>${env.MAVEN_CENTRAL_USERNAME}</username
-                        <password>${env.MAVEN_CENTRAL_PASSWORD}</password>
-                    </server>
-                </servers>
-                <profiles>
-                    <profile>
-                        <activation>
-                            <activeByDefault>true</activeByDefault>
-                        </activation>
-                        <properties>
-                            <gpg.keyname>${env.GPG_KEYNAME}</gpg.keyname>
-                            <gpg.executable>gpg2</gpg.executable>
-                            <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
-                        </properties>
-                    </profile>
-                </profiles>
-            </settings>" > settings.xml
+    - run: mv . ~/.m2/settings.xml
       env:
         MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
         MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
