@@ -29,6 +29,8 @@ jobs:
     - run: cp -p settings.xml ~/.m2/settings.xml
     - run: pwd
     - run: ls -ltr ~/.m2/
+    - run: mvn clean install
+    - run: ls -ltr ~/.m2
       env:
         MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
         MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
