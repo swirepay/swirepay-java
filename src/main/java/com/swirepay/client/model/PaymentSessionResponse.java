@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PaymentSessionResponse.JSON_PROPERTY_UPDATED_AT
 })
 @JsonTypeName("PaymentSessionResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T08:08:42.386Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T08:34:13.482Z[Etc/UTC]")
 public class PaymentSessionResponse {
   public static final String JSON_PROPERTY_GID = "gid";
   private String gid;
