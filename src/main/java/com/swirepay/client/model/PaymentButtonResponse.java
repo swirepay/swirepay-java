@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PaymentButtonResponse.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("PaymentButtonResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T07:22:16.653Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T07:36:07.311Z[Etc/UTC]")
 public class PaymentButtonResponse {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
