@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PaymentMethodRequestCard.JSON_PROPERTY_CONTENT
 })
 @JsonTypeName("PaymentMethodRequest_card")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-21T08:44:56.593Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T07:22:16.653Z[Etc/UTC]")
 public class PaymentMethodRequestCard {
   public static final String JSON_PROPERTY_CONTENT = "content";
   private List<CardRequest> content = null;
