@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PublicKeyResponse.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("PublicKeyResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T07:56:41.107Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T08:08:42.386Z[Etc/UTC]")
 public class PublicKeyResponse {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
