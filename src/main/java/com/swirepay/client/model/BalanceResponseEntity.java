@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   BalanceResponseEntity.JSON_PROPERTY_CONTENT
 })
 @JsonTypeName("BalanceResponse_entity")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T07:36:07.311Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T07:56:41.107Z[Etc/UTC]")
 public class BalanceResponseEntity {
   public static final String JSON_PROPERTY_CONTENT = "content";
   private List<Balance> content = null;

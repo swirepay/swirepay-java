@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TerminalResponse.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("TerminalResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T07:36:07.311Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-29T07:56:41.107Z[Etc/UTC]")
 public class TerminalResponse {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
