@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PaymentMethodRequest.JSON_PROPERTY_PHONE_NUMBER
 })
 @JsonTypeName("PaymentMethodRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-01T10:47:55.753Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-01T11:10:44.725Z[Etc/UTC]")
 public class PaymentMethodRequest {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
