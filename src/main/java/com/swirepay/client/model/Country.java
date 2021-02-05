@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Country.JSON_PROPERTY_UN_CODE
 })
 @JsonTypeName("Country")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:36:18.284Z[Etc/UTC]")
 public class Country {
   public static final String JSON_PROPERTY_ALPHA2 = "alpha2";
   private String alpha2;

@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Dispute.JSON_PROPERTY_PAYMENT_METHOD
 })
 @JsonTypeName("Dispute")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:36:18.284Z[Etc/UTC]")
 public class Dispute {
   public static final String JSON_PROPERTY_GID = "gid";
   private String gid;

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebhookResponse.JSON_PROPERTY_ENTITY
 })
 @JsonTypeName("WebhookResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:36:18.284Z[Etc/UTC]")
 public class WebhookResponse {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
