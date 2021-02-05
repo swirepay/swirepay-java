@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebhookListResponseEntity.JSON_PROPERTY_CONTENT
 })
 @JsonTypeName("WebhookListResponse_entity")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:36:18.284Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:48:22.419Z[Etc/UTC]")
 public class WebhookListResponseEntity {
   public static final String JSON_PROPERTY_EMPTY = "empty";
   private Boolean empty;

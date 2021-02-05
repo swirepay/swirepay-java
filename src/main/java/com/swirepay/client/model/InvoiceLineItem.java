@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   InvoiceLineItem.JSON_PROPERTY_QUANTITY
 })
 @JsonTypeName("InvoiceLineItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:36:18.284Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:48:22.419Z[Etc/UTC]")
 public class InvoiceLineItem {
   public static final String JSON_PROPERTY_GID = "gid";
   private String gid;

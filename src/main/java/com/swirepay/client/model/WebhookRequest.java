@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebhookRequest.JSON_PROPERTY_EVENTS
 })
 @JsonTypeName("WebhookRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:36:18.284Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:48:22.419Z[Etc/UTC]")
 public class WebhookRequest {
   public static final String JSON_PROPERTY_EMAIL = "email";
   private String email;

@@ -2,7 +2,8 @@ openapi: 3.0.1
 info:
   contact:
     email: apiteam@swirepay.com
-  description: Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded
+  description: |-
+    Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded
     request bodies, return JSON-encoded responses, and use standard HTTP response
     codes, authentication, and verbs. You can use the Swirepay API in test mode, which
     does not affect your live data or interact with the banking networks. The `API
@@ -32536,9 +32537,10 @@ components:
       type: object
   securitySchemes:
     api_key:
-      description: 'Developer keys are provided for each Swirepay account. Login to
+      description: |-
+        Developer keys are provided for each Swirepay account. Login to
         Swirepay and check under the Developer menu to find your key. Do not share
-        or distribute your secret keys outside your application. Example key: `sk_test_hB37G8ruWLyb7dMzMZABFwpsFbpHP9Ea`.'
+        or distribute your secret keys outside your application. Example key: `sk_test_hB37G8ruWLyb7dMzMZABFwpsFbpHP9Ea`.
       in: header
       name: x-api-key
       type: apiKey

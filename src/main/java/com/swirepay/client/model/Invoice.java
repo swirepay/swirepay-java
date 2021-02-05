@@ -70,7 +70,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Invoice.JSON_PROPERTY_SUBSCRIPTION
 })
 @JsonTypeName("Invoice")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:36:18.284Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:48:22.419Z[Etc/UTC]")
 public class Invoice {
   public static final String JSON_PROPERTY_GID = "gid";
   private String gid;

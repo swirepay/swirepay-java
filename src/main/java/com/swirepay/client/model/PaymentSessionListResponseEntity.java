@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PaymentSessionListResponseEntity.JSON_PROPERTY_CONTENT
 })
 @JsonTypeName("PaymentSessionListResponse_entity")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:36:18.284Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:48:22.419Z[Etc/UTC]")
 public class PaymentSessionListResponseEntity {
   public static final String JSON_PROPERTY_EMPTY = "empty";
   private Boolean empty;
