@@ -1,4 +1,4 @@
-# swirepay-payment-api
+# swirepay-java
 
 Swirepay API
 
