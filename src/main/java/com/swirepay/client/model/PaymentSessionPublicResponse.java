@@ -45,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PaymentSessionPublicResponse.JSON_PROPERTY_RETURN_URL
 })
 @JsonTypeName("PaymentSessionPublicResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:48:22.419Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:55:44.963Z[Etc/UTC]")
 public class PaymentSessionPublicResponse {
   public static final String JSON_PROPERTY_GID = "gid";
   private String gid;

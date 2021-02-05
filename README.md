@@ -4,7 +4,7 @@ Swirepay API
 
 - API version: 1.0.0
 
-- Build date: 2021-02-05T05:48:22.419Z[Etc/UTC]
+- Build date: 2021-02-05T05:55:44.963Z[Etc/UTC]
 
 Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded
 request bodies, return JSON-encoded responses, and use standard HTTP response
@@ -46,7 +46,7 @@ Add this dependency to your project's POM:
 ```xml
 <dependency>
   <groupId>com.swirepay</groupId>
-  <artifactId>swirepay-payment-api</artifactId>
+  <artifactId>swirepay-java</artifactId>
   <version>1.0.0</version>
   <scope>compile</scope>
 </dependency>
@@ -57,7 +57,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.swirepay:swirepay-payment-api:1.0.0"
+compile "com.swirepay:swirepay-java:1.0.0"
 ```
 
 ### Others
@@ -70,7 +70,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/swirepay-payment-api-1.0.0.jar`
+- `target/swirepay-java-1.0.0.jar`
 - `target/lib/*.jar`
 
 ## Getting Started

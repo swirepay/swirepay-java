@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SubscriptionListResponse.JSON_PROPERTY_ENTITY
 })
 @JsonTypeName("SubscriptionListResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:48:22.419Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:55:44.963Z[Etc/UTC]")
 public class SubscriptionListResponse {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;

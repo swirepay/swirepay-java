@@ -84,7 +84,7 @@ if(hasProperty('target') && target == 'android') {
 
     install {
         repositories.mavenInstaller {
-            pom.artifactId = 'swirepay-payment-api'
+            pom.artifactId = 'swirepay-java'
         }
     }
 

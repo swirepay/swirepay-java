@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TransactionListResponse.JSON_PROPERTY_ENTITY
 })
 @JsonTypeName("TransactionListResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:48:22.419Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:55:44.963Z[Etc/UTC]")
 public class TransactionListResponse {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
