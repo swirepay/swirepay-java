@@ -4,17 +4,16 @@ All URIs are relative to *https://api.swirepay.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getPayout**](PayoutApi.md#getPayout) | **GET** /payout | Get payout
+[**getAllPayouts**](PayoutApi.md#getAllPayouts) | **GET** /payout | Get All payouts
+[**getPayoutByGid**](PayoutApi.md#getPayoutByGid) | **GET** /payout/{gid} | Get payout by Gid
 
 
 
-## getPayout
+## getAllPayouts
 
-> PayoutResponse getPayout(xApiKey)
+> PayoutListResponse getAllPayouts(page, size)
 
-Get payout
-
-Get payout
+Get All payouts
 
 ### Example
 
@@ -23,6 +22,7 @@ Get payout
 import com.swirepay.client.invoker.ApiClient;
 import com.swirepay.client.invoker.ApiException;
 import com.swirepay.client.invoker.Configuration;
+import com.swirepay.client.invoker.auth.*;
 import com.swirepay.client.invoker.models.*;
 import com.swirepay.client.PayoutApi;
 
@@ -30,14 +30,21 @@ public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.swirepay.com/v1");
+        
+        // Configure API key authorization: api_key
+        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+        api_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key.setApiKeyPrefix("Token");
 
         PayoutApi apiInstance = new PayoutApi(defaultClient);
-        String xApiKey = "xApiKey_example"; // String | 
+        Integer page = 56; // Integer | 
+        Integer size = 56; // Integer | 
         try {
-            PayoutResponse result = apiInstance.getPayout(xApiKey);
+            PayoutListResponse result = apiInstance.getAllPayouts(page, size);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling PayoutApi#getPayout");
+            System.err.println("Exception when calling PayoutApi#getAllPayouts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -52,15 +59,16 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xApiKey** | **String**|  |
+ **page** | **Integer**|  | [optional]
+ **size** | **Integer**|  | [optional]
 
 ### Return type
 
-[**PayoutResponse**](PayoutResponse.md)
+[**PayoutListResponse**](PayoutListResponse.md)
 
 ### Authorization
 
-No authorization required
+[api_key](../README.md#api_key)
 
 ### HTTP request headers
 
@@ -70,5 +78,75 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | successful operation |  -  |
+| **200** | Successful Response |  -  |
+
+
+## getPayoutByGid
+
+> PayoutResponse getPayoutByGid(gid)
+
+Get payout by Gid
+
+### Example
+
+```java
+// Import classes:
+import com.swirepay.client.invoker.ApiClient;
+import com.swirepay.client.invoker.ApiException;
+import com.swirepay.client.invoker.Configuration;
+import com.swirepay.client.invoker.auth.*;
+import com.swirepay.client.invoker.models.*;
+import com.swirepay.client.PayoutApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.swirepay.com/v1");
+        
+        // Configure API key authorization: api_key
+        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+        api_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key.setApiKeyPrefix("Token");
+
+        PayoutApi apiInstance = new PayoutApi(defaultClient);
+        String gid = "gid_example"; // String | 
+        try {
+            PayoutResponse result = apiInstance.getPayoutByGid(gid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PayoutApi#getPayoutByGid");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gid** | **String**|  |
+
+### Return type
+
+[**PayoutResponse**](PayoutResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
 

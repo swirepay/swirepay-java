@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -28,58 +28,29 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * CardRequest
  */
 @JsonPropertyOrder({
-  CardRequest.JSON_PROPERTY_NAME,
   CardRequest.JSON_PROPERTY_NUMBER,
-  CardRequest.JSON_PROPERTY_SCHEME,
-  CardRequest.JSON_PROPERTY_CVV,
+  CardRequest.JSON_PROPERTY_NAME,
+  CardRequest.JSON_PROPERTY_EXPIRY_YEAR,
   CardRequest.JSON_PROPERTY_EXPIRY_MONTH,
-  CardRequest.JSON_PROPERTY_EXPIRY_YEAR
+  CardRequest.JSON_PROPERTY_CVV
 })
 @JsonTypeName("CardRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-01T11:10:44.725Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
 public class CardRequest {
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
-
   public static final String JSON_PROPERTY_NUMBER = "number";
   private String number;
 
-  public static final String JSON_PROPERTY_SCHEME = "scheme";
-  private String scheme;
-
-  public static final String JSON_PROPERTY_CVV = "cvv";
-  private String cvv;
-
-  public static final String JSON_PROPERTY_EXPIRY_MONTH = "expiryMonth";
-  private String expiryMonth;
+  public static final String JSON_PROPERTY_NAME = "name";
+  private String name;
 
   public static final String JSON_PROPERTY_EXPIRY_YEAR = "expiryYear";
-  private String expiryYear;
+  private Integer expiryYear;
 
+  public static final String JSON_PROPERTY_EXPIRY_MONTH = "expiryMonth";
+  private Integer expiryMonth;
 
-  public CardRequest name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Sample Customer", value = "")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
+  public static final String JSON_PROPERTY_CVV = "cvv";
+  private Integer cvv;
 
 
   public CardRequest number(String number) {
@@ -92,10 +63,9 @@ public class CardRequest {
    * Get number
    * @return number
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "4242424242424242", value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_NUMBER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getNumber() {
     return number;
@@ -107,82 +77,31 @@ public class CardRequest {
   }
 
 
-  public CardRequest scheme(String scheme) {
+  public CardRequest name(String name) {
     
-    this.scheme = scheme;
+    this.name = name;
     return this;
   }
 
    /**
-   * Get scheme
-   * @return scheme
+   * Get name
+   * @return name
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "VISA", value = "")
-  @JsonProperty(JSON_PROPERTY_SCHEME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getScheme() {
-    return scheme;
+  public String getName() {
+    return name;
   }
 
 
-  public void setScheme(String scheme) {
-    this.scheme = scheme;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
-  public CardRequest cvv(String cvv) {
-    
-    this.cvv = cvv;
-    return this;
-  }
-
-   /**
-   * Get cvv
-   * @return cvv
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "123", value = "")
-  @JsonProperty(JSON_PROPERTY_CVV)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCvv() {
-    return cvv;
-  }
-
-
-  public void setCvv(String cvv) {
-    this.cvv = cvv;
-  }
-
-
-  public CardRequest expiryMonth(String expiryMonth) {
-    
-    this.expiryMonth = expiryMonth;
-    return this;
-  }
-
-   /**
-   * Get expiryMonth
-   * @return expiryMonth
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "08", value = "")
-  @JsonProperty(JSON_PROPERTY_EXPIRY_MONTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getExpiryMonth() {
-    return expiryMonth;
-  }
-
-
-  public void setExpiryMonth(String expiryMonth) {
-    this.expiryMonth = expiryMonth;
-  }
-
-
-  public CardRequest expiryYear(String expiryYear) {
+  public CardRequest expiryYear(Integer expiryYear) {
     
     this.expiryYear = expiryYear;
     return this;
@@ -192,18 +111,67 @@ public class CardRequest {
    * Get expiryYear
    * @return expiryYear
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2024", value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_EXPIRY_YEAR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getExpiryYear() {
+  public Integer getExpiryYear() {
     return expiryYear;
   }
 
 
-  public void setExpiryYear(String expiryYear) {
+  public void setExpiryYear(Integer expiryYear) {
     this.expiryYear = expiryYear;
+  }
+
+
+  public CardRequest expiryMonth(Integer expiryMonth) {
+    
+    this.expiryMonth = expiryMonth;
+    return this;
+  }
+
+   /**
+   * Get expiryMonth
+   * minimum: 1
+   * maximum: 12
+   * @return expiryMonth
+  **/
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_EXPIRY_MONTH)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getExpiryMonth() {
+    return expiryMonth;
+  }
+
+
+  public void setExpiryMonth(Integer expiryMonth) {
+    this.expiryMonth = expiryMonth;
+  }
+
+
+  public CardRequest cvv(Integer cvv) {
+    
+    this.cvv = cvv;
+    return this;
+  }
+
+   /**
+   * Get cvv
+   * @return cvv
+  **/
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_CVV)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getCvv() {
+    return cvv;
+  }
+
+
+  public void setCvv(Integer cvv) {
+    this.cvv = cvv;
   }
 
 
@@ -216,17 +184,16 @@ public class CardRequest {
       return false;
     }
     CardRequest cardRequest = (CardRequest) o;
-    return Objects.equals(this.name, cardRequest.name) &&
-        Objects.equals(this.number, cardRequest.number) &&
-        Objects.equals(this.scheme, cardRequest.scheme) &&
-        Objects.equals(this.cvv, cardRequest.cvv) &&
+    return Objects.equals(this.number, cardRequest.number) &&
+        Objects.equals(this.name, cardRequest.name) &&
+        Objects.equals(this.expiryYear, cardRequest.expiryYear) &&
         Objects.equals(this.expiryMonth, cardRequest.expiryMonth) &&
-        Objects.equals(this.expiryYear, cardRequest.expiryYear);
+        Objects.equals(this.cvv, cardRequest.cvv);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, number, scheme, cvv, expiryMonth, expiryYear);
+    return Objects.hash(number, name, expiryYear, expiryMonth, cvv);
   }
 
 
@@ -234,12 +201,11 @@ public class CardRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CardRequest {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    number: ").append(toIndentedString(number)).append("\n");
-    sb.append("    scheme: ").append(toIndentedString(scheme)).append("\n");
-    sb.append("    cvv: ").append(toIndentedString(cvv)).append("\n");
-    sb.append("    expiryMonth: ").append(toIndentedString(expiryMonth)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    expiryYear: ").append(toIndentedString(expiryYear)).append("\n");
+    sb.append("    expiryMonth: ").append(toIndentedString(expiryMonth)).append("\n");
+    sb.append("    cvv: ").append(toIndentedString(cvv)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -13,6 +13,8 @@
 
 package com.swirepay.client;
 
+import com.swirepay.client.model.InvoiceListResponse;
+import com.swirepay.client.model.InvoiceRequest;
 import com.swirepay.client.model.InvoiceResponse;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -32,17 +34,101 @@ public class InvoiceApiTest {
 
     
     /**
-     * Get invoice
+     * Add a new invoice
      *
-     * Get invoice
+     * 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void getInvoiceTest() {
-        String xApiKey = null;
-        InvoiceResponse response = api.getInvoice(xApiKey);
+    public void addInvoiceTest() {
+        InvoiceRequest invoiceRequest = null;
+        InvoiceResponse response = api.addInvoice(invoiceRequest);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get All Invoices
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAllInvoicesTest() {
+        Integer page = null;
+        Integer size = null;
+        InvoiceListResponse response = api.getAllInvoices(page, size);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get invoice by Gid
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getInvoiceByGidTest() {
+        String gid = null;
+        InvoiceResponse response = api.getInvoiceByGid(gid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * pay for invoice
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void payInvoiceTest() {
+        String gid = null;
+        InvoiceRequest invoiceRequest = null;
+        InvoiceResponse response = api.payInvoice(gid, invoiceRequest);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update invoice to active
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateInvoiceActiveTest() {
+        String gid = null;
+        InvoiceRequest invoiceRequest = null;
+        InvoiceResponse response = api.updateInvoiceActive(gid, invoiceRequest);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update invoice to draft
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateInvoiceDraftTest() {
+        String gid = null;
+        InvoiceRequest invoiceRequest = null;
+        InvoiceResponse response = api.updateInvoiceDraft(gid, invoiceRequest);
 
         // TODO: test validations
     }

@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -13,7 +13,7 @@
 
 package com.swirepay.client;
 
-import com.swirepay.client.model.TransactionResponse;
+import com.swirepay.client.model.TransactionListResponse;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -32,17 +32,18 @@ public class TransactionApiTest {
 
     
     /**
-     * Get transaction
+     * Get All transactions
      *
-     * Get transaction
+     * 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void getTransactionTest() {
-        String xApiKey = null;
-        TransactionResponse response = api.getTransaction(xApiKey);
+    public void getAllTransactionTest() {
+        Integer page = null;
+        Integer size = null;
+        TransactionListResponse response = api.getAllTransaction(page, size);
 
         // TODO: test validations
     }

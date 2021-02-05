@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.swirepay.client.model.CategoryResponseEntity;
+import com.swirepay.client.model.Refund;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -30,18 +30,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   RefundResponse.JSON_PROPERTY_MESSAGE,
-  RefundResponse.JSON_PROPERTY_ENTITY,
   RefundResponse.JSON_PROPERTY_RESPONSE_CODE,
-  RefundResponse.JSON_PROPERTY_STATUS
+  RefundResponse.JSON_PROPERTY_STATUS,
+  RefundResponse.JSON_PROPERTY_ENTITY
 })
 @JsonTypeName("RefundResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-01T11:10:44.725Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
 public class RefundResponse {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
-
-  public static final String JSON_PROPERTY_ENTITY = "entity";
-  private CategoryResponseEntity entity;
 
   public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
   private Long responseCode;
@@ -84,6 +81,9 @@ public class RefundResponse {
   public static final String JSON_PROPERTY_STATUS = "status";
   private StatusEnum status;
 
+  public static final String JSON_PROPERTY_ENTITY = "entity";
+  private Refund entity;
+
 
   public RefundResponse message(String message) {
     
@@ -107,31 +107,6 @@ public class RefundResponse {
 
   public void setMessage(String message) {
     this.message = message;
-  }
-
-
-  public RefundResponse entity(CategoryResponseEntity entity) {
-    
-    this.entity = entity;
-    return this;
-  }
-
-   /**
-   * Get entity
-   * @return entity
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ENTITY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public CategoryResponseEntity getEntity() {
-    return entity;
-  }
-
-
-  public void setEntity(CategoryResponseEntity entity) {
-    this.entity = entity;
   }
 
 
@@ -185,6 +160,31 @@ public class RefundResponse {
   }
 
 
+  public RefundResponse entity(Refund entity) {
+    
+    this.entity = entity;
+    return this;
+  }
+
+   /**
+   * Get entity
+   * @return entity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ENTITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Refund getEntity() {
+    return entity;
+  }
+
+
+  public void setEntity(Refund entity) {
+    this.entity = entity;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -195,14 +195,14 @@ public class RefundResponse {
     }
     RefundResponse refundResponse = (RefundResponse) o;
     return Objects.equals(this.message, refundResponse.message) &&
-        Objects.equals(this.entity, refundResponse.entity) &&
         Objects.equals(this.responseCode, refundResponse.responseCode) &&
-        Objects.equals(this.status, refundResponse.status);
+        Objects.equals(this.status, refundResponse.status) &&
+        Objects.equals(this.entity, refundResponse.entity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message, entity, responseCode, status);
+    return Objects.hash(message, responseCode, status, entity);
   }
 
 
@@ -211,9 +211,9 @@ public class RefundResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class RefundResponse {\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
     sb.append("    responseCode: ").append(toIndentedString(responseCode)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

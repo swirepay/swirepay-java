@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.swirepay.client.model.AddressRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.junit.Assert;
@@ -61,6 +62,54 @@ public class CustomerRequestTest {
     @Test
     public void phoneNumberTest() {
         // TODO: test phoneNumber
+    }
+
+    /**
+     * Test the property 'referenceNumber'
+     */
+    @Test
+    public void referenceNumberTest() {
+        // TODO: test referenceNumber
+    }
+
+    /**
+     * Test the property 'taxStatus'
+     */
+    @Test
+    public void taxStatusTest() {
+        // TODO: test taxStatus
+    }
+
+    /**
+     * Test the property 'taxId'
+     */
+    @Test
+    public void taxIdTest() {
+        // TODO: test taxId
+    }
+
+    /**
+     * Test the property 'taxValue'
+     */
+    @Test
+    public void taxValueTest() {
+        // TODO: test taxValue
+    }
+
+    /**
+     * Test the property 'billingAddress'
+     */
+    @Test
+    public void billingAddressTest() {
+        // TODO: test billingAddress
+    }
+
+    /**
+     * Test the property 'shippingAddress'
+     */
+    @Test
+    public void shippingAddressTest() {
+        // TODO: test shippingAddress
     }
 
 }

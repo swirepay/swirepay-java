@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -40,14 +40,6 @@ public class CardRequestTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property 'number'
      */
     @Test
@@ -56,19 +48,19 @@ public class CardRequestTest {
     }
 
     /**
-     * Test the property 'scheme'
+     * Test the property 'name'
      */
     @Test
-    public void schemeTest() {
-        // TODO: test scheme
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
-     * Test the property 'cvv'
+     * Test the property 'expiryYear'
      */
     @Test
-    public void cvvTest() {
-        // TODO: test cvv
+    public void expiryYearTest() {
+        // TODO: test expiryYear
     }
 
     /**
@@ -80,11 +72,11 @@ public class CardRequestTest {
     }
 
     /**
-     * Test the property 'expiryYear'
+     * Test the property 'cvv'
      */
     @Test
-    public void expiryYearTest() {
-        // TODO: test expiryYear
+    public void cvvTest() {
+        // TODO: test cvv
     }
 
 }

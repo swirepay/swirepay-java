@@ -2,6 +2,7 @@ package com.swirepay.client;
 
 import com.swirepay.client.invoker.ApiClient;
 
+import com.swirepay.client.model.RefundListResponse;
 import com.swirepay.client.model.RefundResponse;
 
 import java.util.Collections;
@@ -25,7 +26,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-01T11:10:44.725Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
 @Component("com.swirepay.client.RefundApi")
 public class RefundApi {
     private ApiClient apiClient;
@@ -48,32 +49,29 @@ public class RefundApi {
     }
 
     /**
-     * Get refund
-     * Get refund
-     * <p><b>200</b> - successful operation
-     * @param xApiKey  (required)
-     * @return RefundResponse
+     * Get All Refunds
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param page  (optional)
+     * @param size  (optional)
+     * @return RefundListResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public RefundResponse getRefund(String xApiKey) throws RestClientException {
-        return getRefundWithHttpInfo(xApiKey).getBody();
+    public RefundListResponse getAllRefunds(Integer page, Integer size) throws RestClientException {
+        return getAllRefundsWithHttpInfo(page, size).getBody();
     }
 
     /**
-     * Get refund
-     * Get refund
-     * <p><b>200</b> - successful operation
-     * @param xApiKey  (required)
-     * @return ResponseEntity&lt;RefundResponse&gt;
+     * Get All Refunds
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param page  (optional)
+     * @param size  (optional)
+     * @return ResponseEntity&lt;RefundListResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<RefundResponse> getRefundWithHttpInfo(String xApiKey) throws RestClientException {
+    public ResponseEntity<RefundListResponse> getAllRefundsWithHttpInfo(Integer page, Integer size) throws RestClientException {
         Object postBody = null;
-        
-        // verify the required parameter 'xApiKey' is set
-        if (xApiKey == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'xApiKey' when calling getRefund");
-        }
         
         String path = apiClient.expandPath("/refund", Collections.<String, Object>emptyMap());
 
@@ -82,8 +80,58 @@ public class RefundApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        if (xApiKey != null)
-        headerParams.add("x-api-key", apiClient.parameterToString(xApiKey));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "size", size));
+
+        final String[] localVarAccepts = { 
+            "application/json"
+         };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] contentTypes = {  };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "api_key" };
+
+        ParameterizedTypeReference<RefundListResponse> returnType = new ParameterizedTypeReference<RefundListResponse>() {};
+        return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
+    }
+    /**
+     * Get refund by Gid
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param gid  (required)
+     * @return RefundResponse
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public RefundResponse getRefundByGid(String gid) throws RestClientException {
+        return getRefundByGidWithHttpInfo(gid).getBody();
+    }
+
+    /**
+     * Get refund by Gid
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param gid  (required)
+     * @return ResponseEntity&lt;RefundResponse&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<RefundResponse> getRefundByGidWithHttpInfo(String gid) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'gid' is set
+        if (gid == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'gid' when calling getRefundByGid");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("gid", gid);
+        String path = apiClient.expandPath("/refund/{gid}", uriVariables);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         final String[] localVarAccepts = { 
             "application/json"

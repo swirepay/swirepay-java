@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -18,7 +18,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.swirepay.client.model.PaymentMethodRequestCard;
+import com.swirepay.client.model.CardRequest;
+import com.swirepay.client.model.UpiRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.junit.Assert;
@@ -41,14 +42,6 @@ public class PaymentMethodRequestTest {
     }
 
     /**
-     * Test the property 'type'
-     */
-    @Test
-    public void typeTest() {
-        // TODO: test type
-    }
-
-    /**
      * Test the property 'card'
      */
     @Test
@@ -57,11 +50,27 @@ public class PaymentMethodRequestTest {
     }
 
     /**
-     * Test the property 'phoneNumber'
+     * Test the property 'customerGid'
      */
     @Test
-    public void phoneNumberTest() {
-        // TODO: test phoneNumber
+    public void customerGidTest() {
+        // TODO: test customerGid
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
+     * Test the property 'upi'
+     */
+    @Test
+    public void upiTest() {
+        // TODO: test upi
     }
 
 }

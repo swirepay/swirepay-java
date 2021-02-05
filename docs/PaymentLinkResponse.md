@@ -7,9 +7,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **String** |  |  [optional]
-**entity** | [**CategoryResponseEntity**](CategoryResponseEntity.md) |  |  [optional]
 **responseCode** | **Long** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) | status of response |  [optional]
+**entity** | [**PaymentLink**](PaymentLink.md) |  |  [optional]
 
 
 

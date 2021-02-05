@@ -26,7 +26,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-01T11:10:44.725Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
 @Component("com.swirepay.client.PaymentMethodApi")
 public class PaymentMethodApi {
     private ApiClient apiClient;
@@ -49,39 +49,27 @@ public class PaymentMethodApi {
     }
 
     /**
-     * Add a payment method
-     * Adds a payment method to an account
-     * <p><b>200</b> - successful operation
-     * @param xApiKey  (required)
-     * @param body Payment method object that needs to be added to the account (required)
+     * Add Payment Method
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param paymentMethodRequest  (optional)
      * @return PaymentMethodResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentMethodResponse addPaymentMethod(String xApiKey, PaymentMethodRequest body) throws RestClientException {
-        return addPaymentMethodWithHttpInfo(xApiKey, body).getBody();
+    public PaymentMethodResponse addPaymentMethod(PaymentMethodRequest paymentMethodRequest) throws RestClientException {
+        return addPaymentMethodWithHttpInfo(paymentMethodRequest).getBody();
     }
 
     /**
-     * Add a payment method
-     * Adds a payment method to an account
-     * <p><b>200</b> - successful operation
-     * @param xApiKey  (required)
-     * @param body Payment method object that needs to be added to the account (required)
+     * Add Payment Method
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param paymentMethodRequest  (optional)
      * @return ResponseEntity&lt;PaymentMethodResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentMethodResponse> addPaymentMethodWithHttpInfo(String xApiKey, PaymentMethodRequest body) throws RestClientException {
-        Object postBody = body;
-        
-        // verify the required parameter 'xApiKey' is set
-        if (xApiKey == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'xApiKey' when calling addPaymentMethod");
-        }
-        
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'body' when calling addPaymentMethod");
-        }
+    public ResponseEntity<PaymentMethodResponse> addPaymentMethodWithHttpInfo(PaymentMethodRequest paymentMethodRequest) throws RestClientException {
+        Object postBody = paymentMethodRequest;
         
         String path = apiClient.expandPath("/payment-method", Collections.<String, Object>emptyMap());
 
@@ -89,9 +77,6 @@ public class PaymentMethodApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        if (xApiKey != null)
-        headerParams.add("x-api-key", apiClient.parameterToString(xApiKey));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -108,42 +93,89 @@ public class PaymentMethodApi {
         return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
     }
     /**
-     * Get payment methods
-     * Get payment methods
-     * <p><b>200</b> - successful operation
-     * @param xApiKey  (required)
-     * @return PaymentMethodResponse
+     * Delete Payment Method
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param gid  (required)
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentMethodResponse getPaymentMethod(String xApiKey) throws RestClientException {
-        return getPaymentMethodWithHttpInfo(xApiKey).getBody();
+    public void deletePaymentMethod(String gid) throws RestClientException {
+        deletePaymentMethodWithHttpInfo(gid);
     }
 
     /**
-     * Get payment methods
-     * Get payment methods
-     * <p><b>200</b> - successful operation
-     * @param xApiKey  (required)
-     * @return ResponseEntity&lt;PaymentMethodResponse&gt;
+     * Delete Payment Method
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param gid  (required)
+     * @return ResponseEntity&lt;Void&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentMethodResponse> getPaymentMethodWithHttpInfo(String xApiKey) throws RestClientException {
+    public ResponseEntity<Void> deletePaymentMethodWithHttpInfo(String gid) throws RestClientException {
         Object postBody = null;
         
-        // verify the required parameter 'xApiKey' is set
-        if (xApiKey == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'xApiKey' when calling getPaymentMethod");
+        // verify the required parameter 'gid' is set
+        if (gid == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'gid' when calling deletePaymentMethod");
         }
         
-        String path = apiClient.expandPath("/payment-method", Collections.<String, Object>emptyMap());
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("gid", gid);
+        String path = apiClient.expandPath("/payment-method/{gid}", uriVariables);
 
         final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        if (xApiKey != null)
-        headerParams.add("x-api-key", apiClient.parameterToString(xApiKey));
+        final String[] localVarAccepts = {  };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] contentTypes = {  };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "api_key" };
+
+        ParameterizedTypeReference<Void> returnType = new ParameterizedTypeReference<Void>() {};
+        return apiClient.invokeAPI(path, HttpMethod.DELETE, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
+    }
+    /**
+     * Get Payment Method by Gid
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param gid  (required)
+     * @return PaymentMethodResponse
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public PaymentMethodResponse getPaymentMethodByGid(String gid) throws RestClientException {
+        return getPaymentMethodByGidWithHttpInfo(gid).getBody();
+    }
+
+    /**
+     * Get Payment Method by Gid
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param gid  (required)
+     * @return ResponseEntity&lt;PaymentMethodResponse&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<PaymentMethodResponse> getPaymentMethodByGidWithHttpInfo(String gid) throws RestClientException {
+        Object postBody = null;
+        
+        // verify the required parameter 'gid' is set
+        if (gid == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'gid' when calling getPaymentMethodByGid");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("gid", gid);
+        String path = apiClient.expandPath("/payment-method/{gid}", uriVariables);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
         final String[] localVarAccepts = { 
             "application/json"

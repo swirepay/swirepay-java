@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -13,6 +13,8 @@
 
 package com.swirepay.client;
 
+import com.swirepay.client.model.PaymentLinkListResponse;
+import com.swirepay.client.model.PaymentLinkRequest;
 import com.swirepay.client.model.PaymentLinkResponse;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -32,17 +34,66 @@ public class PaymentLinkApiTest {
 
     
     /**
-     * Get payment link
+     * Add a new Payment Link
      *
-     * Get payment link
+     * 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void getPaymentLinkTest() {
-        String xApiKey = null;
-        PaymentLinkResponse response = api.getPaymentLink(xApiKey);
+    public void addPaymentLinkTest() {
+        PaymentLinkRequest paymentLinkRequest = null;
+        PaymentLinkResponse response = api.addPaymentLink(paymentLinkRequest);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get Payment Link by Gid
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void cancelPaymentLinkByGidTest() {
+        String gid = null;
+        PaymentLinkResponse response = api.cancelPaymentLinkByGid(gid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get All payment Link
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAllPaymentLinkTest() {
+        Integer page = null;
+        Integer size = null;
+        PaymentLinkListResponse response = api.getAllPaymentLink(page, size);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get Payment Link by Gid
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPaymentLinkByGidTest() {
+        String gid = null;
+        PaymentLinkResponse response = api.getPaymentLinkByGid(gid);
 
         // TODO: test validations
     }

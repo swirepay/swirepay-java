@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.swirepay.client.model.PaymentSession;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -28,95 +29,159 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * PaymentSessionResponse
  */
 @JsonPropertyOrder({
-  PaymentSessionResponse.JSON_PROPERTY_GID,
-  PaymentSessionResponse.JSON_PROPERTY_CREATED_AT,
-  PaymentSessionResponse.JSON_PROPERTY_UPDATED_AT
+  PaymentSessionResponse.JSON_PROPERTY_MESSAGE,
+  PaymentSessionResponse.JSON_PROPERTY_RESPONSE_CODE,
+  PaymentSessionResponse.JSON_PROPERTY_STATUS,
+  PaymentSessionResponse.JSON_PROPERTY_ENTITY
 })
 @JsonTypeName("PaymentSessionResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-01T11:10:44.725Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
 public class PaymentSessionResponse {
-  public static final String JSON_PROPERTY_GID = "gid";
-  private String gid;
+  public static final String JSON_PROPERTY_MESSAGE = "message";
+  private String message;
 
-  public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
-  private String createdAt;
+  public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
+  private Long responseCode;
 
-  public static final String JSON_PROPERTY_UPDATED_AT = "updatedAt";
-  private String updatedAt;
-
-
-  public PaymentSessionResponse gid(String gid) {
+  /**
+   * status of response
+   */
+  public enum StatusEnum {
+    SUCCESS("SUCCESS"),
     
-    this.gid = gid;
+    FAILED("FAILED");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_STATUS = "status";
+  private StatusEnum status;
+
+  public static final String JSON_PROPERTY_ENTITY = "entity";
+  private PaymentSession entity;
+
+
+  public PaymentSessionResponse message(String message) {
+    
+    this.message = message;
     return this;
   }
 
    /**
-   * Get gid
-   * @return gid
+   * Get message
+   * @return message
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "paymentsession-16b90f1c2ecc484c899f2720c557f5a7", value = "")
-  @JsonProperty(JSON_PROPERTY_GID)
+  @ApiModelProperty(example = "OK", value = "")
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getGid() {
-    return gid;
+  public String getMessage() {
+    return message;
   }
 
 
-  public void setGid(String gid) {
-    this.gid = gid;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
-  public PaymentSessionResponse createdAt(String createdAt) {
+  public PaymentSessionResponse responseCode(Long responseCode) {
     
-    this.createdAt = createdAt;
+    this.responseCode = responseCode;
     return this;
   }
 
    /**
-   * Get createdAt
-   * @return createdAt
+   * Get responseCode
+   * @return responseCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2020-09-25T03:43:13.000Z", value = "")
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @ApiModelProperty(example = "200", value = "")
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getCreatedAt() {
-    return createdAt;
+  public Long getResponseCode() {
+    return responseCode;
   }
 
 
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
+  public void setResponseCode(Long responseCode) {
+    this.responseCode = responseCode;
   }
 
 
-  public PaymentSessionResponse updatedAt(String updatedAt) {
+  public PaymentSessionResponse status(StatusEnum status) {
     
-    this.updatedAt = updatedAt;
+    this.status = status;
     return this;
   }
 
    /**
-   * Get updatedAt
-   * @return updatedAt
+   * status of response
+   * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2020-09-25T03:43:13.000Z", value = "")
-  @JsonProperty(JSON_PROPERTY_UPDATED_AT)
+  @ApiModelProperty(value = "status of response")
+  @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getUpdatedAt() {
-    return updatedAt;
+  public StatusEnum getStatus() {
+    return status;
   }
 
 
-  public void setUpdatedAt(String updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
+  public PaymentSessionResponse entity(PaymentSession entity) {
+    
+    this.entity = entity;
+    return this;
+  }
+
+   /**
+   * Get entity
+   * @return entity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ENTITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public PaymentSession getEntity() {
+    return entity;
+  }
+
+
+  public void setEntity(PaymentSession entity) {
+    this.entity = entity;
   }
 
 
@@ -129,14 +194,15 @@ public class PaymentSessionResponse {
       return false;
     }
     PaymentSessionResponse paymentSessionResponse = (PaymentSessionResponse) o;
-    return Objects.equals(this.gid, paymentSessionResponse.gid) &&
-        Objects.equals(this.createdAt, paymentSessionResponse.createdAt) &&
-        Objects.equals(this.updatedAt, paymentSessionResponse.updatedAt);
+    return Objects.equals(this.message, paymentSessionResponse.message) &&
+        Objects.equals(this.responseCode, paymentSessionResponse.responseCode) &&
+        Objects.equals(this.status, paymentSessionResponse.status) &&
+        Objects.equals(this.entity, paymentSessionResponse.entity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(gid, createdAt, updatedAt);
+    return Objects.hash(message, responseCode, status, entity);
   }
 
 
@@ -144,9 +210,10 @@ public class PaymentSessionResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentSessionResponse {\n");
-    sb.append("    gid: ").append(toIndentedString(gid)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    responseCode: ").append(toIndentedString(responseCode)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

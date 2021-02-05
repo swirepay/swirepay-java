@@ -2,6 +2,8 @@ package com.swirepay.client;
 
 import com.swirepay.client.invoker.ApiClient;
 
+import com.swirepay.client.model.PublicKeyListResponse;
+import com.swirepay.client.model.PublicKeyRequest;
 import com.swirepay.client.model.PublicKeyResponse;
 
 import java.util.Collections;
@@ -25,7 +27,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-01T11:10:44.725Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
 @Component("com.swirepay.client.PublicKeyApi")
 public class PublicKeyApi {
     private ApiClient apiClient;
@@ -48,32 +50,29 @@ public class PublicKeyApi {
     }
 
     /**
-     * Get public key
-     * Get public key
-     * <p><b>200</b> - successful operation
-     * @param xApiKey  (required)
-     * @return PublicKeyResponse
+     * Get All Public Key
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param page  (optional)
+     * @param size  (optional)
+     * @return PublicKeyListResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PublicKeyResponse getPublicKey(String xApiKey) throws RestClientException {
-        return getPublicKeyWithHttpInfo(xApiKey).getBody();
+    public PublicKeyListResponse getAllPublicKey(Integer page, Integer size) throws RestClientException {
+        return getAllPublicKeyWithHttpInfo(page, size).getBody();
     }
 
     /**
-     * Get public key
-     * Get public key
-     * <p><b>200</b> - successful operation
-     * @param xApiKey  (required)
-     * @return ResponseEntity&lt;PublicKeyResponse&gt;
+     * Get All Public Key
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param page  (optional)
+     * @param size  (optional)
+     * @return ResponseEntity&lt;PublicKeyListResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PublicKeyResponse> getPublicKeyWithHttpInfo(String xApiKey) throws RestClientException {
+    public ResponseEntity<PublicKeyListResponse> getAllPublicKeyWithHttpInfo(Integer page, Integer size) throws RestClientException {
         Object postBody = null;
-        
-        // verify the required parameter 'xApiKey' is set
-        if (xApiKey == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'xApiKey' when calling getPublicKey");
-        }
         
         String path = apiClient.expandPath("/public-key", Collections.<String, Object>emptyMap());
 
@@ -82,8 +81,8 @@ public class PublicKeyApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        if (xApiKey != null)
-        headerParams.add("x-api-key", apiClient.parameterToString(xApiKey));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "size", size));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -94,7 +93,61 @@ public class PublicKeyApi {
 
         String[] authNames = new String[] { "api_key" };
 
-        ParameterizedTypeReference<PublicKeyResponse> returnType = new ParameterizedTypeReference<PublicKeyResponse>() {};
+        ParameterizedTypeReference<PublicKeyListResponse> returnType = new ParameterizedTypeReference<PublicKeyListResponse>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
+    }
+    /**
+     * Roll Public Key by Gid
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param gid  (required)
+     * @param publicKeyRequest  (optional)
+     * @return PublicKeyResponse
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public PublicKeyResponse rollPublicKeyByGid(String gid, PublicKeyRequest publicKeyRequest) throws RestClientException {
+        return rollPublicKeyByGidWithHttpInfo(gid, publicKeyRequest).getBody();
+    }
+
+    /**
+     * Roll Public Key by Gid
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param gid  (required)
+     * @param publicKeyRequest  (optional)
+     * @return ResponseEntity&lt;PublicKeyResponse&gt;
+     * @throws RestClientException if an error occurs while attempting to invoke the API
+     */
+    public ResponseEntity<PublicKeyResponse> rollPublicKeyByGidWithHttpInfo(String gid, PublicKeyRequest publicKeyRequest) throws RestClientException {
+        Object postBody = publicKeyRequest;
+        
+        // verify the required parameter 'gid' is set
+        if (gid == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'gid' when calling rollPublicKeyByGid");
+        }
+        
+        // create path and map variables
+        final Map<String, Object> uriVariables = new HashMap<String, Object>();
+        uriVariables.put("gid", gid);
+        String path = apiClient.expandPath("/public-key/{gid}/roll", uriVariables);
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] localVarAccepts = { 
+            "application/json"
+         };
+        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] contentTypes = { 
+            "application/json"
+         };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] {  };
+
+        ParameterizedTypeReference<PublicKeyResponse> returnType = new ParameterizedTypeReference<PublicKeyResponse>() {};
+        return apiClient.invokeAPI(path, HttpMethod.PATCH, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
     }
 }

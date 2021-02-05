@@ -4,17 +4,16 @@ All URIs are relative to *https://api.swirepay.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getPublicKey**](PublicKeyApi.md#getPublicKey) | **GET** /public-key | Get public key
+[**getAllPublicKey**](PublicKeyApi.md#getAllPublicKey) | **GET** /public-key | Get All Public Key
+[**rollPublicKeyByGid**](PublicKeyApi.md#rollPublicKeyByGid) | **PATCH** /public-key/{gid}/roll | Roll Public Key by Gid
 
 
 
-## getPublicKey
+## getAllPublicKey
 
-> PublicKeyResponse getPublicKey(xApiKey)
+> PublicKeyListResponse getAllPublicKey(page, size)
 
-Get public key
-
-Get public key
+Get All Public Key
 
 ### Example
 
@@ -39,12 +38,13 @@ public class Example {
         //api_key.setApiKeyPrefix("Token");
 
         PublicKeyApi apiInstance = new PublicKeyApi(defaultClient);
-        String xApiKey = "xApiKey_example"; // String | 
+        Integer page = 56; // Integer | 
+        Integer size = 56; // Integer | 
         try {
-            PublicKeyResponse result = apiInstance.getPublicKey(xApiKey);
+            PublicKeyListResponse result = apiInstance.getAllPublicKey(page, size);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling PublicKeyApi#getPublicKey");
+            System.err.println("Exception when calling PublicKeyApi#getAllPublicKey");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -59,11 +59,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xApiKey** | **String**|  |
+ **page** | **Integer**|  | [optional]
+ **size** | **Integer**|  | [optional]
 
 ### Return type
 
-[**PublicKeyResponse**](PublicKeyResponse.md)
+[**PublicKeyListResponse**](PublicKeyListResponse.md)
 
 ### Authorization
 
@@ -77,5 +78,70 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | successful operation |  -  |
+| **200** | Successful Response |  -  |
+
+
+## rollPublicKeyByGid
+
+> PublicKeyResponse rollPublicKeyByGid(gid, publicKeyRequest)
+
+Roll Public Key by Gid
+
+### Example
+
+```java
+// Import classes:
+import com.swirepay.client.invoker.ApiClient;
+import com.swirepay.client.invoker.ApiException;
+import com.swirepay.client.invoker.Configuration;
+import com.swirepay.client.invoker.models.*;
+import com.swirepay.client.PublicKeyApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.swirepay.com/v1");
+
+        PublicKeyApi apiInstance = new PublicKeyApi(defaultClient);
+        String gid = "gid_example"; // String | 
+        PublicKeyRequest publicKeyRequest = new PublicKeyRequest(); // PublicKeyRequest | 
+        try {
+            PublicKeyResponse result = apiInstance.rollPublicKeyByGid(gid, publicKeyRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PublicKeyApi#rollPublicKeyByGid");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gid** | **String**|  |
+ **publicKeyRequest** | [**PublicKeyRequest**](PublicKeyRequest.md)|  | [optional]
+
+### Return type
+
+[**PublicKeyResponse**](PublicKeyResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
 

@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -13,6 +13,7 @@
 
 package com.swirepay.client;
 
+import com.swirepay.client.model.CustomerListResponse;
 import com.swirepay.client.model.CustomerRequest;
 import com.swirepay.client.model.CustomerResponse;
 import org.junit.Test;
@@ -33,24 +34,39 @@ public class CustomerApiTest {
 
     
     /**
-     * Add a customer
+     * Add a new customer
      *
-     * Adds a customer to an account
+     * 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void addCustomerTest() {
-        String xApiKey = null;
-        CustomerRequest body = null;
-        CustomerResponse response = api.addCustomer(xApiKey, body);
+        CustomerRequest customerRequest = null;
+        CustomerResponse response = api.addCustomer(customerRequest);
 
         // TODO: test validations
     }
     
     /**
-     * Get customers
+     * Delete customer by Gid
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteCustomerByGidTest() {
+        String gid = null;
+        api.deleteCustomerByGid(gid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get all customers
      *
      * Get customers
      *
@@ -58,9 +74,43 @@ public class CustomerApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getCustomerTest() {
-        String xApiKey = null;
-        CustomerResponse response = api.getCustomer(xApiKey);
+    public void getAllCustomersTest() {
+        Integer page = null;
+        Integer size = null;
+        CustomerListResponse response = api.getAllCustomers(page, size);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get Customer by Gid
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCustomerByGidTest() {
+        String gid = null;
+        CustomerResponse response = api.getCustomerByGid(gid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update Customer by Gid
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateCustomerTest() {
+        String gid = null;
+        CustomerRequest customerRequest = null;
+        CustomerResponse response = api.updateCustomer(gid, customerRequest);
 
         // TODO: test validations
     }

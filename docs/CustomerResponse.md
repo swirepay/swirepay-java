@@ -6,12 +6,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**gid** | **String** |  |  [optional]
-**email** | **String** |  |  [optional]
-**name** | **String** |  |  [optional]
-**phoneNumber** | **String** |  |  [optional]
-**createdAt** | **String** |  |  [optional]
-**updatedAt** | **String** |  |  [optional]
+**message** | **String** |  |  [optional]
+**responseCode** | **Long** |  |  [optional]
+**status** | [**StatusEnum**](#StatusEnum) | status of response |  [optional]
+**entity** | [**Customer**](Customer.md) |  |  [optional]
+
+
+
+## Enum: StatusEnum
+
+Name | Value
+---- | -----
+SUCCESS | &quot;SUCCESS&quot;
+FAILED | &quot;FAILED&quot;
 
 
 

@@ -4,17 +4,15 @@ All URIs are relative to *https://api.swirepay.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getTransaction**](TransactionApi.md#getTransaction) | **GET** /transaction | Get transaction
+[**getAllTransaction**](TransactionApi.md#getAllTransaction) | **GET** /transaction | Get All transactions
 
 
 
-## getTransaction
+## getAllTransaction
 
-> TransactionResponse getTransaction(xApiKey)
+> TransactionListResponse getAllTransaction(page, size)
 
-Get transaction
-
-Get transaction
+Get All transactions
 
 ### Example
 
@@ -39,12 +37,13 @@ public class Example {
         //api_key.setApiKeyPrefix("Token");
 
         TransactionApi apiInstance = new TransactionApi(defaultClient);
-        String xApiKey = "xApiKey_example"; // String | 
+        Integer page = 56; // Integer | 
+        Integer size = 56; // Integer | 
         try {
-            TransactionResponse result = apiInstance.getTransaction(xApiKey);
+            TransactionListResponse result = apiInstance.getAllTransaction(page, size);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling TransactionApi#getTransaction");
+            System.err.println("Exception when calling TransactionApi#getAllTransaction");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -59,11 +58,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xApiKey** | **String**|  |
+ **page** | **Integer**|  | [optional]
+ **size** | **Integer**|  | [optional]
 
 ### Return type
 
-[**TransactionResponse**](TransactionResponse.md)
+[**TransactionListResponse**](TransactionListResponse.md)
 
 ### Authorization
 
@@ -77,5 +77,5 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | successful operation |  -  |
+| **200** | Successful Response |  -  |
 

@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.swirepay.client.model.PaymentSession;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.junit.Assert;
@@ -40,27 +41,35 @@ public class PaymentSessionResponseTest {
     }
 
     /**
-     * Test the property 'gid'
+     * Test the property 'message'
      */
     @Test
-    public void gidTest() {
-        // TODO: test gid
+    public void messageTest() {
+        // TODO: test message
     }
 
     /**
-     * Test the property 'createdAt'
+     * Test the property 'responseCode'
      */
     @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
+    public void responseCodeTest() {
+        // TODO: test responseCode
     }
 
     /**
-     * Test the property 'updatedAt'
+     * Test the property 'status'
      */
     @Test
-    public void updatedAtTest() {
-        // TODO: test updatedAt
+    public void statusTest() {
+        // TODO: test status
+    }
+
+    /**
+     * Test the property 'entity'
+     */
+    @Test
+    public void entityTest() {
+        // TODO: test entity
     }
 
 }

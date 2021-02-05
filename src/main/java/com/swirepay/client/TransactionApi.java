@@ -2,7 +2,7 @@ package com.swirepay.client;
 
 import com.swirepay.client.invoker.ApiClient;
 
-import com.swirepay.client.model.TransactionResponse;
+import com.swirepay.client.model.TransactionListResponse;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-01T11:10:44.725Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
 @Component("com.swirepay.client.TransactionApi")
 public class TransactionApi {
     private ApiClient apiClient;
@@ -48,32 +48,29 @@ public class TransactionApi {
     }
 
     /**
-     * Get transaction
-     * Get transaction
-     * <p><b>200</b> - successful operation
-     * @param xApiKey  (required)
-     * @return TransactionResponse
+     * Get All transactions
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param page  (optional)
+     * @param size  (optional)
+     * @return TransactionListResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public TransactionResponse getTransaction(String xApiKey) throws RestClientException {
-        return getTransactionWithHttpInfo(xApiKey).getBody();
+    public TransactionListResponse getAllTransaction(Integer page, Integer size) throws RestClientException {
+        return getAllTransactionWithHttpInfo(page, size).getBody();
     }
 
     /**
-     * Get transaction
-     * Get transaction
-     * <p><b>200</b> - successful operation
-     * @param xApiKey  (required)
-     * @return ResponseEntity&lt;TransactionResponse&gt;
+     * Get All transactions
+     * 
+     * <p><b>200</b> - Successful Response
+     * @param page  (optional)
+     * @param size  (optional)
+     * @return ResponseEntity&lt;TransactionListResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<TransactionResponse> getTransactionWithHttpInfo(String xApiKey) throws RestClientException {
+    public ResponseEntity<TransactionListResponse> getAllTransactionWithHttpInfo(Integer page, Integer size) throws RestClientException {
         Object postBody = null;
-        
-        // verify the required parameter 'xApiKey' is set
-        if (xApiKey == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'xApiKey' when calling getTransaction");
-        }
         
         String path = apiClient.expandPath("/transaction", Collections.<String, Object>emptyMap());
 
@@ -82,8 +79,8 @@ public class TransactionApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
-        if (xApiKey != null)
-        headerParams.add("x-api-key", apiClient.parameterToString(xApiKey));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
+        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "size", size));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -94,7 +91,7 @@ public class TransactionApi {
 
         String[] authNames = new String[] { "api_key" };
 
-        ParameterizedTypeReference<TransactionResponse> returnType = new ParameterizedTypeReference<TransactionResponse>() {};
+        ParameterizedTypeReference<TransactionListResponse> returnType = new ParameterizedTypeReference<TransactionListResponse>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
     }
 }

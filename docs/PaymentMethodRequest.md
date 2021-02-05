@@ -6,9 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** |  |  [optional]
-**card** | [**PaymentMethodRequestCard**](PaymentMethodRequestCard.md) |  |  [optional]
-**phoneNumber** | **String** |  |  [optional]
+**card** | [**CardRequest**](CardRequest.md) |  |  [optional]
+**customerGid** | **String** |  |  [optional]
+**type** | **String** |  | 
+**upi** | [**UpiRequest**](UpiRequest.md) |  |  [optional]
 
 
 

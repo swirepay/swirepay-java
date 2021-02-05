@@ -1,5 +1,5 @@
 /*
- * Swirepay Payment API
+ * Swirepay API
  * Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs. You can use the Swirepay API in test mode, which does not affect your live data or interact with the banking networks. The `API key` you use to authenticate the request determines whether the request is live mode or test mode.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.swirepay.client.model.Customer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -28,182 +29,159 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * CustomerResponse
  */
 @JsonPropertyOrder({
-  CustomerResponse.JSON_PROPERTY_GID,
-  CustomerResponse.JSON_PROPERTY_EMAIL,
-  CustomerResponse.JSON_PROPERTY_NAME,
-  CustomerResponse.JSON_PROPERTY_PHONE_NUMBER,
-  CustomerResponse.JSON_PROPERTY_CREATED_AT,
-  CustomerResponse.JSON_PROPERTY_UPDATED_AT
+  CustomerResponse.JSON_PROPERTY_MESSAGE,
+  CustomerResponse.JSON_PROPERTY_RESPONSE_CODE,
+  CustomerResponse.JSON_PROPERTY_STATUS,
+  CustomerResponse.JSON_PROPERTY_ENTITY
 })
 @JsonTypeName("CustomerResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-01T11:10:44.725Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-05T05:32:04.002Z[Etc/UTC]")
 public class CustomerResponse {
-  public static final String JSON_PROPERTY_GID = "gid";
-  private String gid;
+  public static final String JSON_PROPERTY_MESSAGE = "message";
+  private String message;
 
-  public static final String JSON_PROPERTY_EMAIL = "email";
-  private String email;
+  public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
+  private Long responseCode;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
-
-  public static final String JSON_PROPERTY_PHONE_NUMBER = "phoneNumber";
-  private String phoneNumber;
-
-  public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
-  private String createdAt;
-
-  public static final String JSON_PROPERTY_UPDATED_AT = "updatedAt";
-  private String updatedAt;
-
-
-  public CustomerResponse gid(String gid) {
+  /**
+   * status of response
+   */
+  public enum StatusEnum {
+    SUCCESS("SUCCESS"),
     
-    this.gid = gid;
+    FAILED("FAILED");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_STATUS = "status";
+  private StatusEnum status;
+
+  public static final String JSON_PROPERTY_ENTITY = "entity";
+  private Customer entity;
+
+
+  public CustomerResponse message(String message) {
+    
+    this.message = message;
     return this;
   }
 
    /**
-   * Get gid
-   * @return gid
+   * Get message
+   * @return message
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "customer-16b90f1c2ecc484c899f2720c557f5a7", value = "")
-  @JsonProperty(JSON_PROPERTY_GID)
+  @ApiModelProperty(example = "OK", value = "")
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getGid() {
-    return gid;
+  public String getMessage() {
+    return message;
   }
 
 
-  public void setGid(String gid) {
-    this.gid = gid;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
-  public CustomerResponse email(String email) {
+  public CustomerResponse responseCode(Long responseCode) {
     
-    this.email = email;
+    this.responseCode = responseCode;
     return this;
   }
 
    /**
-   * Get email
-   * @return email
+   * Get responseCode
+   * @return responseCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "sample-customer@example.com", value = "")
-  @JsonProperty(JSON_PROPERTY_EMAIL)
+  @ApiModelProperty(example = "200", value = "")
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getEmail() {
-    return email;
+  public Long getResponseCode() {
+    return responseCode;
   }
 
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setResponseCode(Long responseCode) {
+    this.responseCode = responseCode;
   }
 
 
-  public CustomerResponse name(String name) {
+  public CustomerResponse status(StatusEnum status) {
     
-    this.name = name;
+    this.status = status;
     return this;
   }
 
    /**
-   * Get name
-   * @return name
+   * status of response
+   * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Sample Customer", value = "")
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @ApiModelProperty(value = "status of response")
+  @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getName() {
-    return name;
+  public StatusEnum getStatus() {
+    return status;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
 
-  public CustomerResponse phoneNumber(String phoneNumber) {
+  public CustomerResponse entity(Customer entity) {
     
-    this.phoneNumber = phoneNumber;
+    this.entity = entity;
     return this;
   }
 
    /**
-   * Get phoneNumber
-   * @return phoneNumber
+   * Get entity
+   * @return entity
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "18000000000", value = "")
-  @JsonProperty(JSON_PROPERTY_PHONE_NUMBER)
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ENTITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getPhoneNumber() {
-    return phoneNumber;
+  public Customer getEntity() {
+    return entity;
   }
 
 
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
-  }
-
-
-  public CustomerResponse createdAt(String createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2020-09-25T03:43:13.000Z", value = "")
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public CustomerResponse updatedAt(String updatedAt) {
-    
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * Get updatedAt
-   * @return updatedAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2020-09-25T03:43:13.000Z", value = "")
-  @JsonProperty(JSON_PROPERTY_UPDATED_AT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getUpdatedAt() {
-    return updatedAt;
-  }
-
-
-  public void setUpdatedAt(String updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setEntity(Customer entity) {
+    this.entity = entity;
   }
 
 
@@ -216,17 +194,15 @@ public class CustomerResponse {
       return false;
     }
     CustomerResponse customerResponse = (CustomerResponse) o;
-    return Objects.equals(this.gid, customerResponse.gid) &&
-        Objects.equals(this.email, customerResponse.email) &&
-        Objects.equals(this.name, customerResponse.name) &&
-        Objects.equals(this.phoneNumber, customerResponse.phoneNumber) &&
-        Objects.equals(this.createdAt, customerResponse.createdAt) &&
-        Objects.equals(this.updatedAt, customerResponse.updatedAt);
+    return Objects.equals(this.message, customerResponse.message) &&
+        Objects.equals(this.responseCode, customerResponse.responseCode) &&
+        Objects.equals(this.status, customerResponse.status) &&
+        Objects.equals(this.entity, customerResponse.entity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(gid, email, name, phoneNumber, createdAt, updatedAt);
+    return Objects.hash(message, responseCode, status, entity);
   }
 
 
@@ -234,12 +210,10 @@ public class CustomerResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerResponse {\n");
-    sb.append("    gid: ").append(toIndentedString(gid)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    responseCode: ").append(toIndentedString(responseCode)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
     sb.append("}");
     return sb.toString();
   }
