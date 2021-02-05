@@ -34,4 +34,5 @@ jobs:
         run: |
           mkdir -p ~/.m2
           cp -p settings.xml ~/.m2/settings.xml
+          mvn clean repository:bundle-create gpg:sign
           mvn deploy -Dgpg.passphrase="$GPG_PASSPHRASE"
