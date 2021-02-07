@@ -52,4 +52,4 @@ jobs:
         run: |
           mkdir -p ~/.m2
           cp -p settings.xml ~/.m2/settings.xml
-          mvn deploy -Dgpg.passphrase="$GPG_PASSPHRASE"
+          mvn clean deploy
