@@ -4,14 +4,13 @@
     <artifactId>swirepay-java</artifactId>
     <packaging>jar</packaging>
     <name>swirepay-java</name>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <url>https://github.com/swirepay/swirepay-java</url>
     <description>Swirepay Java</description>
     <scm>
         <connection>scm:git:git@github.com:swirepay/swirepay-java.git</connection>
         <developerConnection>scm:git:git@github.com:swirepay/swirepay-java.git</developerConnection>
         <url>https://github.com/swirepay/swirepay-java</url>
-        <tag>swirepay-java-1.0.0</tag>
     </scm>
 
     <licenses>
@@ -166,37 +165,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>${version.maven-deploy-plugin}</version>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>${version.maven-release-plugin}</version>
-                <configuration>
-                    <localCheckout>true</localCheckout>
-                    <pushChanges>false</pushChanges>
-                    <mavenExecutorId>forked-path</mavenExecutorId>
-                    <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.scm</groupId>
-                        <artifactId>maven-scm-provider-gitexe</artifactId>
-                        <version>${version.maven-scm-provider-gitexe}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>${version.nexus-staging-maven-plugin}</version>
@@ -220,43 +188,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                        <configuration>
+                            <gpgArguments>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>     
         </plugins>
     </build>
-
-    <profiles>
-        <!-- GPG Signature on release -->
-        <profile>
-            <id>release-sign-artifacts</id>
-            <activation>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                                <configuration>
-                                    <keyname>${gpg.keyname}</keyname>
-                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
     <dependencies>
         <dependency>
@@ -344,9 +297,6 @@
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <junit-version>4.13.1</junit-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <version.maven-deploy-plugin>2.8.2</version.maven-deploy-plugin>
-        <version.maven-release-plugin>2.5.3</version.maven-release-plugin>
-        <version.maven-scm-provider-gitexe>1.9.5</version.maven-scm-provider-gitexe>
         <version.nexus-staging-maven-plugin>1.6.7</version.nexus-staging-maven-plugin>
         <version.maven-source-plugin>3.2.0</version.maven-source-plugin>
     </properties>
