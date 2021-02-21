@@ -14,19 +14,8 @@ Name | Type | Description | Notes
 **amount** | **Long** |  |  [optional]
 **description** | **String** |  |  [optional]
 **note** | **String** |  |  [optional]
-**billingFrequency** | [**BillingFrequencyEnum**](#BillingFrequencyEnum) |  |  [optional]
+**billingFrequency** | **BillingFrequency** |  |  [optional]
 **billingPeriod** | **Integer** |  |  [optional]
-
-
-
-## Enum: BillingFrequencyEnum
-
-Name | Value
----- | -----
-DAY | &quot;DAY&quot;
-MONTH | &quot;MONTH&quot;
-WEEK | &quot;WEEK&quot;
-YEAR | &quot;YEAR&quot;
 
 
 

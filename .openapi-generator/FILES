@@ -62,6 +62,11 @@ docs/PayoutListResponse.md
 docs/PayoutListResponseEntity.md
 docs/PayoutResponse.md
 docs/Plan.md
+docs/PlanApi.md
+docs/PlanListResponse.md
+docs/PlanListResponseEntity.md
+docs/PlanRequest.md
+docs/PlanResponse.md
 docs/PublicKey.md
 docs/PublicKeyApi.md
 docs/PublicKeyListResponse.md
@@ -121,6 +126,7 @@ src/main/java/com/swirepay/client/PaymentLinkApi.java
 src/main/java/com/swirepay/client/PaymentMethodApi.java
 src/main/java/com/swirepay/client/PaymentSessionApi.java
 src/main/java/com/swirepay/client/PayoutApi.java
+src/main/java/com/swirepay/client/PlanApi.java
 src/main/java/com/swirepay/client/PublicKeyApi.java
 src/main/java/com/swirepay/client/RefundApi.java
 src/main/java/com/swirepay/client/SecretKeyApi.java
@@ -186,6 +192,10 @@ src/main/java/com/swirepay/client/model/PayoutListResponse.java
 src/main/java/com/swirepay/client/model/PayoutListResponseEntity.java
 src/main/java/com/swirepay/client/model/PayoutResponse.java
 src/main/java/com/swirepay/client/model/Plan.java
+src/main/java/com/swirepay/client/model/PlanListResponse.java
+src/main/java/com/swirepay/client/model/PlanListResponseEntity.java
+src/main/java/com/swirepay/client/model/PlanRequest.java
+src/main/java/com/swirepay/client/model/PlanResponse.java
 src/main/java/com/swirepay/client/model/PublicKey.java
 src/main/java/com/swirepay/client/model/PublicKeyListResponse.java
 src/main/java/com/swirepay/client/model/PublicKeyListResponseEntity.java
@@ -230,6 +240,7 @@ src/test/java/com/swirepay/client/PaymentLinkApiTest.java
 src/test/java/com/swirepay/client/PaymentMethodApiTest.java
 src/test/java/com/swirepay/client/PaymentSessionApiTest.java
 src/test/java/com/swirepay/client/PayoutApiTest.java
+src/test/java/com/swirepay/client/PlanApiTest.java
 src/test/java/com/swirepay/client/PublicKeyApiTest.java
 src/test/java/com/swirepay/client/RefundApiTest.java
 src/test/java/com/swirepay/client/SecretKeyApiTest.java
@@ -285,6 +296,10 @@ src/test/java/com/swirepay/client/model/PayoutListResponseEntityTest.java
 src/test/java/com/swirepay/client/model/PayoutListResponseTest.java
 src/test/java/com/swirepay/client/model/PayoutResponseTest.java
 src/test/java/com/swirepay/client/model/PayoutTest.java
+src/test/java/com/swirepay/client/model/PlanListResponseEntityTest.java
+src/test/java/com/swirepay/client/model/PlanListResponseTest.java
+src/test/java/com/swirepay/client/model/PlanRequestTest.java
+src/test/java/com/swirepay/client/model/PlanResponseTest.java
 src/test/java/com/swirepay/client/model/PlanTest.java
 src/test/java/com/swirepay/client/model/PublicKeyListResponseEntityTest.java
 src/test/java/com/swirepay/client/model/PublicKeyListResponseTest.java

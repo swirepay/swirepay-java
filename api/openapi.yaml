@@ -14,7 +14,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: https://policies.swirepay.com
   title: Swirepay API
-  version: 1.0.0
+  version: 1.0.1
 externalDocs:
   description: Learn more with Swirepay guide
   url: https://guide.swirepay.com
@@ -782,6 +782,112 @@ paths:
       summary: pay for invoice
       tags:
       - Invoice
+      x-contentType: application/json
+      x-accepts: application/json
+  /plan:
+    get:
+      operationId: getAllPlan
+      parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanListResponse'
+          description: Successful Response
+      security:
+      - api_key: []
+      summary: Get All Plan
+      tags:
+      - Plan
+      x-accepts: application/json
+    post:
+      operationId: addPlan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanResponse'
+          description: Successful Response
+      security:
+      - api_key: []
+      summary: Add a new plan
+      tags:
+      - Plan
+      x-contentType: application/json
+      x-accepts: application/json
+  /plan/{gid}:
+    get:
+      operationId: getplanByGid
+      parameters:
+      - explode: false
+        in: path
+        name: gid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanResponse'
+          description: Successful Response
+      security:
+      - api_key: []
+      summary: Get Plan by Gid
+      tags:
+      - Plan
+      x-accepts: application/json
+    patch:
+      operationId: updatePlan
+      parameters:
+      - explode: false
+        in: path
+        name: gid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanResponse'
+          description: Successful Response
+      security:
+      - api_key: []
+      summary: Update Plan
+      tags:
+      - Plan
       x-contentType: application/json
       x-accepts: application/json
   /subscription:
@@ -8785,7 +8891,6 @@ components:
               id: 5
             planEndDate: planEndDate
             plan:
-              billingFrequency: DAY
               createdAt: createdAt
               note: note
               amount: 1
@@ -8818,7 +8923,6 @@ components:
                 id: 5
               planStartDate: planStartDate
               plan:
-                billingFrequency: DAY
                 createdAt: createdAt
                 note: note
                 amount: 1
@@ -9520,7 +9624,6 @@ components:
                 id: 5
               planEndDate: planEndDate
               plan:
-                billingFrequency: DAY
                 createdAt: createdAt
                 note: note
                 amount: 1
@@ -9553,7 +9656,6 @@ components:
                   id: 5
                 planStartDate: planStartDate
                 plan:
-                  billingFrequency: DAY
                   createdAt: createdAt
                   note: note
                   amount: 1
@@ -10227,7 +10329,6 @@ components:
                 id: 5
               planEndDate: planEndDate
               plan:
-                billingFrequency: DAY
                 createdAt: createdAt
                 note: note
                 amount: 1
@@ -10260,7 +10361,6 @@ components:
                   id: 5
                 planStartDate: planStartDate
                 plan:
-                  billingFrequency: DAY
                   createdAt: createdAt
                   note: note
                   amount: 1
@@ -11018,7 +11118,6 @@ components:
             id: 5
           planEndDate: planEndDate
           plan:
-            billingFrequency: DAY
             createdAt: createdAt
             note: note
             amount: 1
@@ -11051,7 +11150,6 @@ components:
               id: 5
             planStartDate: planStartDate
             plan:
-              billingFrequency: DAY
               createdAt: createdAt
               note: note
               amount: 1
@@ -11405,7 +11503,6 @@ components:
               id: 5
             planEndDate: planEndDate
             plan:
-              billingFrequency: DAY
               createdAt: createdAt
               note: note
               amount: 1
@@ -11438,7 +11535,6 @@ components:
                 id: 5
               planStartDate: planStartDate
               plan:
-                billingFrequency: DAY
                 createdAt: createdAt
                 note: note
                 amount: 1
@@ -11764,7 +11860,6 @@ components:
               id: 5
             planEndDate: planEndDate
             plan:
-              billingFrequency: DAY
               createdAt: createdAt
               note: note
               amount: 1
@@ -11797,7 +11892,6 @@ components:
                 id: 5
               planStartDate: planStartDate
               plan:
-                billingFrequency: DAY
                 createdAt: createdAt
                 note: note
                 amount: 1
@@ -12119,24 +12213,25 @@ components:
         invoiceLineItems:
         - note: note
           amount: amount
-          quantity: 1
+          quantity: 5
           name: name
           description: description
           currencyCode: currencyCode
         - note: note
           amount: amount
-          quantity: 1
+          quantity: 5
           name: name
           description: description
           currencyCode: currencyCode
         customerGid: customerGid
+        planQuantity: 0
         statementDescription: statementDescription
         description: description
         emailRecipientList:
         - emailRecipientList
         - emailRecipientList
-        planTotalPayments: planTotalPayments
-        planBillingPeriod: 6
+        planTotalPayments: 6
+        planBillingPeriod: 5
         planGid: planGid
         shippingAddress:
           city: city
@@ -12156,9 +12251,11 @@ components:
         paymentMethodType:
         - null
         - null
-        planAmount: 0
+        planAmount: 1
         status: status
       properties:
+        planQuantity:
+          type: integer
         currencyCode:
           type: string
         customerGid:
@@ -12166,7 +12263,7 @@ components:
         planGid:
           type: string
         planTotalPayments:
-          type: string
+          type: integer
         planStartDate:
           type: string
         planEndDate:
@@ -12224,7 +12321,7 @@ components:
       example:
         note: note
         amount: amount
-        quantity: 1
+        quantity: 5
         name: name
         description: description
         currencyCode: currencyCode
@@ -15792,6 +15889,117 @@ components:
         entity:
           $ref: '#/components/schemas/PaymentSessionListResponse_entity'
       type: object
+    PlanRequest:
+      example:
+        note: note
+        amount: 0
+        billingPeriod: 6
+        name: name
+        description: description
+        currencyCode: currencyCode
+      properties:
+        currencyCode:
+          type: string
+        name:
+          type: string
+        amount:
+          format: int64
+          type: integer
+        description:
+          type: string
+        note:
+          type: string
+        billingPeriod:
+          type: integer
+        billingFrequency:
+          $ref: '#/components/schemas/BillingFrequency'
+      required:
+      - amount
+      - billingFrequency
+      - billingPeriod
+      - currencyCode
+      - name
+      type: object
+    PlanListResponse:
+      example:
+        message: OK
+        entity:
+          number: 0
+          numberOfElements: 0
+          size: 0
+          totalPages: 0
+          content:
+          - createdAt: createdAt
+            note: note
+            amount: 1
+            gid: gid
+            deleted: true
+            billingPeriod: 1
+            name: name
+            description: description
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            note: note
+            amount: 1
+            gid: gid
+            deleted: true
+            billingPeriod: 1
+            name: name
+            description: description
+            updatedAt: updatedAt
+          empty: false
+          totalElements: 0
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+        entity:
+          $ref: '#/components/schemas/PlanListResponse_entity'
+      type: object
+    PlanResponse:
+      example:
+        message: OK
+        entity:
+          createdAt: createdAt
+          note: note
+          amount: 1
+          gid: gid
+          deleted: true
+          billingPeriod: 1
+          name: name
+          description: description
+          updatedAt: updatedAt
+        responseCode: 200
+        status: SUCCESS
+      properties:
+        message:
+          example: OK
+          type: string
+        responseCode:
+          example: 200
+          format: int64
+          type: integer
+        status:
+          description: status of response
+          enum:
+          - SUCCESS
+          - FAILED
+          type: string
+        entity:
+          $ref: '#/components/schemas/Plan'
+      type: object
     Webhook:
       example:
         createdAt: createdAt
@@ -17045,7 +17253,6 @@ components:
             id: 5
           planEndDate: planEndDate
           plan:
-            billingFrequency: DAY
             createdAt: createdAt
             note: note
             amount: 1
@@ -17078,7 +17285,6 @@ components:
               id: 5
             planStartDate: planStartDate
             plan:
-              billingFrequency: DAY
               createdAt: createdAt
               note: note
               amount: 1
@@ -17806,7 +18012,6 @@ components:
           id: 5
         planEndDate: planEndDate
         plan:
-          billingFrequency: DAY
           createdAt: createdAt
           note: note
           amount: 1
@@ -17839,7 +18044,6 @@ components:
             id: 5
           planStartDate: planStartDate
           plan:
-            billingFrequency: DAY
             createdAt: createdAt
             note: note
             amount: 1
@@ -18231,7 +18435,6 @@ components:
           id: 5
         planStartDate: planStartDate
         plan:
-          billingFrequency: DAY
           createdAt: createdAt
           note: note
           amount: 1
@@ -18356,7 +18559,6 @@ components:
       type: object
     Plan:
       example:
-        billingFrequency: DAY
         createdAt: createdAt
         note: note
         amount: 1
@@ -18385,12 +18587,7 @@ components:
         note:
           type: string
         billingFrequency:
-          enum:
-          - DAY
-          - MONTH
-          - WEEK
-          - YEAR
-          type: string
+          $ref: '#/components/schemas/BillingFrequency'
         billingPeriod:
           type: integer
       type: object
@@ -27525,7 +27722,6 @@ components:
               id: 5
             planEndDate: planEndDate
             plan:
-              billingFrequency: DAY
               createdAt: createdAt
               note: note
               amount: 1
@@ -27558,7 +27754,6 @@ components:
                 id: 5
               planStartDate: planStartDate
               plan:
-                billingFrequency: DAY
                 createdAt: createdAt
                 note: note
                 amount: 1
@@ -28232,7 +28427,6 @@ components:
               id: 5
             planEndDate: planEndDate
             plan:
-              billingFrequency: DAY
               createdAt: createdAt
               note: note
               amount: 1
@@ -28265,7 +28459,6 @@ components:
                 id: 5
               planStartDate: planStartDate
               plan:
-                billingFrequency: DAY
                 createdAt: createdAt
                 note: note
                 amount: 1
@@ -28932,7 +29125,6 @@ components:
             id: 5
           planEndDate: planEndDate
           plan:
-            billingFrequency: DAY
             createdAt: createdAt
             note: note
             amount: 1
@@ -28965,7 +29157,6 @@ components:
               id: 5
             planStartDate: planStartDate
             plan:
-              billingFrequency: DAY
               createdAt: createdAt
               note: note
               amount: 1
@@ -29291,7 +29482,6 @@ components:
             id: 5
           planEndDate: planEndDate
           plan:
-            billingFrequency: DAY
             createdAt: createdAt
             note: note
             amount: 1
@@ -29324,7 +29514,6 @@ components:
               id: 5
             planStartDate: planStartDate
             plan:
-              billingFrequency: DAY
               createdAt: createdAt
               note: note
               amount: 1
@@ -32533,6 +32722,57 @@ components:
         content:
           items:
             $ref: '#/components/schemas/PaymentSession'
+          type: array
+      type: object
+    PlanListResponse_entity:
+      example:
+        number: 0
+        numberOfElements: 0
+        size: 0
+        totalPages: 0
+        content:
+        - createdAt: createdAt
+          note: note
+          amount: 1
+          gid: gid
+          deleted: true
+          billingPeriod: 1
+          name: name
+          description: description
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          note: note
+          amount: 1
+          gid: gid
+          deleted: true
+          billingPeriod: 1
+          name: name
+          description: description
+          updatedAt: updatedAt
+        empty: false
+        totalElements: 0
+      properties:
+        empty:
+          example: false
+          type: boolean
+        number:
+          example: 0
+          type: integer
+        numberOfElements:
+          example: 0
+          type: integer
+        totalElements:
+          example: 0
+          type: integer
+        totalPages:
+          example: 0
+          type: integer
+        size:
+          example: 0
+          type: integer
+        content:
+          items:
+            $ref: '#/components/schemas/Plan'
           type: array
       type: object
   securitySchemes:

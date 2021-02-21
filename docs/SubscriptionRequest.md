@@ -6,10 +6,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**planQuantity** | **Integer** |  | 
 **currencyCode** | **String** |  | 
 **customerGid** | **String** |  | 
 **planGid** | **String** |  | 
-**planTotalPayments** | **String** |  | 
+**planTotalPayments** | **Integer** |  | 
 **planStartDate** | **String** |  | 
 **planEndDate** | **String** |  |  [optional]
 **planAmount** | **Long** |  | 

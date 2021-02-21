@@ -2,9 +2,9 @@
 
 Swirepay API
 
-- API version: 1.0.0
+- API version: 1.0.1
 
-- Build date: 2021-02-05T05:55:44.963Z[Etc/UTC]
+- Build date: 2021-02-21T03:58:21.960Z[Etc/UTC]
 
 Swirepay REST APIs' are resource-oriented URLs that accept JSON-encoded
 request bodies, return JSON-encoded responses, and use standard HTTP response
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.swirepay</groupId>
   <artifactId>swirepay-java</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.swirepay:swirepay-java:1.0.0"
+compile "com.swirepay:swirepay-java:1.0.1"
 ```
 
 ### Others
@@ -70,7 +70,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/swirepay-java-1.0.0.jar`
+- `target/swirepay-java-1.0.1.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -150,6 +150,10 @@ Class | Method | HTTP request | Description
 *PaymentSessionApi* | [**updatePaymentSession**](docs/PaymentSessionApi.md#updatePaymentSession) | **PATCH** /payment-session/{gid}/update | Update Payment Session
 *PayoutApi* | [**getAllPayouts**](docs/PayoutApi.md#getAllPayouts) | **GET** /payout | Get All payouts
 *PayoutApi* | [**getPayoutByGid**](docs/PayoutApi.md#getPayoutByGid) | **GET** /payout/{gid} | Get payout by Gid
+*PlanApi* | [**addPlan**](docs/PlanApi.md#addPlan) | **POST** /plan | Add a new plan
+*PlanApi* | [**getAllPlan**](docs/PlanApi.md#getAllPlan) | **GET** /plan | Get All Plan
+*PlanApi* | [**getplanByGid**](docs/PlanApi.md#getplanByGid) | **GET** /plan/{gid} | Get Plan by Gid
+*PlanApi* | [**updatePlan**](docs/PlanApi.md#updatePlan) | **PATCH** /plan/{gid} | Update Plan
 *PublicKeyApi* | [**getAllPublicKey**](docs/PublicKeyApi.md#getAllPublicKey) | **GET** /public-key | Get All Public Key
 *PublicKeyApi* | [**rollPublicKeyByGid**](docs/PublicKeyApi.md#rollPublicKeyByGid) | **PATCH** /public-key/{gid}/roll | Roll Public Key by Gid
 *RefundApi* | [**getAllRefunds**](docs/RefundApi.md#getAllRefunds) | **GET** /refund | Get All Refunds
@@ -220,6 +224,10 @@ Class | Method | HTTP request | Description
  - [PayoutListResponseEntity](docs/PayoutListResponseEntity.md)
  - [PayoutResponse](docs/PayoutResponse.md)
  - [Plan](docs/Plan.md)
+ - [PlanListResponse](docs/PlanListResponse.md)
+ - [PlanListResponseEntity](docs/PlanListResponseEntity.md)
+ - [PlanRequest](docs/PlanRequest.md)
+ - [PlanResponse](docs/PlanResponse.md)
  - [PublicKey](docs/PublicKey.md)
  - [PublicKeyListResponse](docs/PublicKeyListResponse.md)
  - [PublicKeyListResponseEntity](docs/PublicKeyListResponseEntity.md)
