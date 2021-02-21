@@ -54,7 +54,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PaymentLink.JSON_PROPERTY_SUPPORT
 })
 @JsonTypeName("PaymentLink")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-21T03:58:21.960Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-21T04:14:10.799Z[Etc/UTC]")
 public class PaymentLink {
   public static final String JSON_PROPERTY_GID = "gid";
   private String gid;
