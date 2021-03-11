@@ -27,7 +27,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-21T04:14:10.799Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-03-11T05:48:21.646Z[Etc/UTC]")
 @Component("com.swirepay.client.PlanApi")
 public class PlanApi {
     private ApiClient apiClient;
@@ -104,11 +104,12 @@ public class PlanApi {
      * <p><b>200</b> - Successful Response
      * @param page  (optional)
      * @param size  (optional)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return PlanListResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PlanListResponse getAllPlan(Integer page, Integer size) throws RestClientException {
-        return getAllPlanWithHttpInfo(page, size).getBody();
+    public PlanListResponse getAllPlan(Integer page, Integer size, String destinationAccount) throws RestClientException {
+        return getAllPlanWithHttpInfo(page, size, destinationAccount).getBody();
     }
 
     /**
@@ -117,10 +118,11 @@ public class PlanApi {
      * <p><b>200</b> - Successful Response
      * @param page  (optional)
      * @param size  (optional)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;PlanListResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PlanListResponse> getAllPlanWithHttpInfo(Integer page, Integer size) throws RestClientException {
+    public ResponseEntity<PlanListResponse> getAllPlanWithHttpInfo(Integer page, Integer size, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         String path = apiClient.expandPath("/plan", Collections.<String, Object>emptyMap());
@@ -132,6 +134,9 @@ public class PlanApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "size", size));
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -150,11 +155,12 @@ public class PlanApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return PlanResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PlanResponse getplanByGid(String gid) throws RestClientException {
-        return getplanByGidWithHttpInfo(gid).getBody();
+    public PlanResponse getplanByGid(String gid, String destinationAccount) throws RestClientException {
+        return getplanByGidWithHttpInfo(gid, destinationAccount).getBody();
     }
 
     /**
@@ -162,10 +168,11 @@ public class PlanApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;PlanResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PlanResponse> getplanByGidWithHttpInfo(String gid) throws RestClientException {
+    public ResponseEntity<PlanResponse> getplanByGidWithHttpInfo(String gid, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'gid' is set
@@ -182,6 +189,9 @@ public class PlanApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -200,12 +210,13 @@ public class PlanApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param planRequest  (optional)
      * @return PlanResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PlanResponse updatePlan(String gid, PlanRequest planRequest) throws RestClientException {
-        return updatePlanWithHttpInfo(gid, planRequest).getBody();
+    public PlanResponse updatePlan(String gid, String destinationAccount, PlanRequest planRequest) throws RestClientException {
+        return updatePlanWithHttpInfo(gid, destinationAccount, planRequest).getBody();
     }
 
     /**
@@ -213,11 +224,12 @@ public class PlanApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param planRequest  (optional)
      * @return ResponseEntity&lt;PlanResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PlanResponse> updatePlanWithHttpInfo(String gid, PlanRequest planRequest) throws RestClientException {
+    public ResponseEntity<PlanResponse> updatePlanWithHttpInfo(String gid, String destinationAccount, PlanRequest planRequest) throws RestClientException {
         Object postBody = planRequest;
         
         // verify the required parameter 'gid' is set
@@ -234,6 +246,9 @@ public class PlanApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"

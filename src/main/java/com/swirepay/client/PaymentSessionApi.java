@@ -27,7 +27,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-21T04:14:10.799Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-03-11T05:48:21.646Z[Etc/UTC]")
 @Component("com.swirepay.client.PaymentSessionApi")
 public class PaymentSessionApi {
     private ApiClient apiClient;
@@ -54,11 +54,12 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param paymentSessionRequest  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return PaymentSessionResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentSessionResponse addPaymentSession(PaymentSessionRequest paymentSessionRequest) throws RestClientException {
-        return addPaymentSessionWithHttpInfo(paymentSessionRequest).getBody();
+    public PaymentSessionResponse addPaymentSession(PaymentSessionRequest paymentSessionRequest, String destinationAccount) throws RestClientException {
+        return addPaymentSessionWithHttpInfo(paymentSessionRequest, destinationAccount).getBody();
     }
 
     /**
@@ -66,10 +67,11 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param paymentSessionRequest  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;PaymentSessionResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentSessionResponse> addPaymentSessionWithHttpInfo(PaymentSessionRequest paymentSessionRequest) throws RestClientException {
+    public ResponseEntity<PaymentSessionResponse> addPaymentSessionWithHttpInfo(PaymentSessionRequest paymentSessionRequest, String destinationAccount) throws RestClientException {
         Object postBody = paymentSessionRequest;
         
         // verify the required parameter 'paymentSessionRequest' is set
@@ -83,6 +85,9 @@ public class PaymentSessionApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -103,11 +108,12 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return PaymentSessionResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentSessionResponse cancelPaymentSession(String gid) throws RestClientException {
-        return cancelPaymentSessionWithHttpInfo(gid).getBody();
+    public PaymentSessionResponse cancelPaymentSession(String gid, String destinationAccount) throws RestClientException {
+        return cancelPaymentSessionWithHttpInfo(gid, destinationAccount).getBody();
     }
 
     /**
@@ -115,10 +121,11 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;PaymentSessionResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentSessionResponse> cancelPaymentSessionWithHttpInfo(String gid) throws RestClientException {
+    public ResponseEntity<PaymentSessionResponse> cancelPaymentSessionWithHttpInfo(String gid, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'gid' is set
@@ -136,6 +143,9 @@ public class PaymentSessionApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
+
         final String[] localVarAccepts = { 
             "application/json"
          };
@@ -153,11 +163,12 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return PaymentSessionResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentSessionResponse capturePaymentSession(String gid) throws RestClientException {
-        return capturePaymentSessionWithHttpInfo(gid).getBody();
+    public PaymentSessionResponse capturePaymentSession(String gid, String destinationAccount) throws RestClientException {
+        return capturePaymentSessionWithHttpInfo(gid, destinationAccount).getBody();
     }
 
     /**
@@ -165,10 +176,11 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;PaymentSessionResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentSessionResponse> capturePaymentSessionWithHttpInfo(String gid) throws RestClientException {
+    public ResponseEntity<PaymentSessionResponse> capturePaymentSessionWithHttpInfo(String gid, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'gid' is set
@@ -186,6 +198,9 @@ public class PaymentSessionApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
+
         final String[] localVarAccepts = { 
             "application/json"
          };
@@ -203,12 +218,13 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param paymentSessionRequest  (optional)
      * @return PaymentSessionResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentSessionResponse confirmPaymentSession(String gid, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
-        return confirmPaymentSessionWithHttpInfo(gid, paymentSessionRequest).getBody();
+    public PaymentSessionResponse confirmPaymentSession(String gid, String destinationAccount, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
+        return confirmPaymentSessionWithHttpInfo(gid, destinationAccount, paymentSessionRequest).getBody();
     }
 
     /**
@@ -216,11 +232,12 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param paymentSessionRequest  (optional)
      * @return ResponseEntity&lt;PaymentSessionResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentSessionResponse> confirmPaymentSessionWithHttpInfo(String gid, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
+    public ResponseEntity<PaymentSessionResponse> confirmPaymentSessionWithHttpInfo(String gid, String destinationAccount, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
         Object postBody = paymentSessionRequest;
         
         // verify the required parameter 'gid' is set
@@ -237,6 +254,9 @@ public class PaymentSessionApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -258,11 +278,12 @@ public class PaymentSessionApi {
      * <p><b>200</b> - Successful Response
      * @param page  (optional)
      * @param size  (optional)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return PaymentSessionListResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentSessionListResponse getAllPaymentSession(Integer page, Integer size) throws RestClientException {
-        return getAllPaymentSessionWithHttpInfo(page, size).getBody();
+    public PaymentSessionListResponse getAllPaymentSession(Integer page, Integer size, String destinationAccount) throws RestClientException {
+        return getAllPaymentSessionWithHttpInfo(page, size, destinationAccount).getBody();
     }
 
     /**
@@ -271,10 +292,11 @@ public class PaymentSessionApi {
      * <p><b>200</b> - Successful Response
      * @param page  (optional)
      * @param size  (optional)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;PaymentSessionListResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentSessionListResponse> getAllPaymentSessionWithHttpInfo(Integer page, Integer size) throws RestClientException {
+    public ResponseEntity<PaymentSessionListResponse> getAllPaymentSessionWithHttpInfo(Integer page, Integer size, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         String path = apiClient.expandPath("/payment-session", Collections.<String, Object>emptyMap());
@@ -286,6 +308,9 @@ public class PaymentSessionApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "size", size));
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -304,11 +329,12 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return PaymentSessionResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentSessionResponse getPaymentSessionByGid(String gid) throws RestClientException {
-        return getPaymentSessionByGidWithHttpInfo(gid).getBody();
+    public PaymentSessionResponse getPaymentSessionByGid(String gid, String destinationAccount) throws RestClientException {
+        return getPaymentSessionByGidWithHttpInfo(gid, destinationAccount).getBody();
     }
 
     /**
@@ -316,10 +342,11 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;PaymentSessionResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentSessionResponse> getPaymentSessionByGidWithHttpInfo(String gid) throws RestClientException {
+    public ResponseEntity<PaymentSessionResponse> getPaymentSessionByGidWithHttpInfo(String gid, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'gid' is set
@@ -336,6 +363,9 @@ public class PaymentSessionApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -404,12 +434,13 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param paymentSessionRequest  (optional)
      * @return PaymentSessionResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentSessionResponse refundPaymentSession(String gid, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
-        return refundPaymentSessionWithHttpInfo(gid, paymentSessionRequest).getBody();
+    public PaymentSessionResponse refundPaymentSession(String gid, String destinationAccount, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
+        return refundPaymentSessionWithHttpInfo(gid, destinationAccount, paymentSessionRequest).getBody();
     }
 
     /**
@@ -417,11 +448,12 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param paymentSessionRequest  (optional)
      * @return ResponseEntity&lt;PaymentSessionResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentSessionResponse> refundPaymentSessionWithHttpInfo(String gid, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
+    public ResponseEntity<PaymentSessionResponse> refundPaymentSessionWithHttpInfo(String gid, String destinationAccount, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
         Object postBody = paymentSessionRequest;
         
         // verify the required parameter 'gid' is set
@@ -438,6 +470,9 @@ public class PaymentSessionApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -458,12 +493,13 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param paymentSessionRequest  (optional)
      * @return PaymentSessionResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentSessionResponse updatePaymentSession(String gid, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
-        return updatePaymentSessionWithHttpInfo(gid, paymentSessionRequest).getBody();
+    public PaymentSessionResponse updatePaymentSession(String gid, String destinationAccount, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
+        return updatePaymentSessionWithHttpInfo(gid, destinationAccount, paymentSessionRequest).getBody();
     }
 
     /**
@@ -471,11 +507,12 @@ public class PaymentSessionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param paymentSessionRequest  (optional)
      * @return ResponseEntity&lt;PaymentSessionResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentSessionResponse> updatePaymentSessionWithHttpInfo(String gid, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
+    public ResponseEntity<PaymentSessionResponse> updatePaymentSessionWithHttpInfo(String gid, String destinationAccount, PaymentSessionRequest paymentSessionRequest) throws RestClientException {
         Object postBody = paymentSessionRequest;
         
         // verify the required parameter 'gid' is set
@@ -492,6 +529,9 @@ public class PaymentSessionApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"

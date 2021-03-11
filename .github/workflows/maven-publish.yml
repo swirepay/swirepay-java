@@ -37,17 +37,17 @@ jobs:
         run: echo "$GPG_PRIVATE_KEY" > private.key
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-        
+
       - name: Import GPG Key
         run: gpg --import --batch private.key
-        
+
       - name: Cache
         uses: actions/cache@v1
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
-            ${{ runner.os }}-maven- 
+            ${{ runner.os }}-maven-
       - name: Build and Publish to Maven Central
         run: |
           mkdir -p ~/.m2

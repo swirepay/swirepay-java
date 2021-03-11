@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## cancelSubscription
 
-> SubscriptionResponse cancelSubscription(gid, subscriptionRequest)
+> SubscriptionResponse cancelSubscription(gid, destinationAccount, subscriptionRequest)
 
 Cancel Subscription
 
@@ -111,9 +111,10 @@ public class Example {
 
         SubscriptionApi apiInstance = new SubscriptionApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         SubscriptionRequest subscriptionRequest = new SubscriptionRequest(); // SubscriptionRequest | 
         try {
-            SubscriptionResponse result = apiInstance.cancelSubscription(gid, subscriptionRequest);
+            SubscriptionResponse result = apiInstance.cancelSubscription(gid, destinationAccount, subscriptionRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionApi#cancelSubscription");
@@ -132,6 +133,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
  **subscriptionRequest** | [**SubscriptionRequest**](SubscriptionRequest.md)|  | [optional]
 
 ### Return type
@@ -155,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## getAllSubscription
 
-> SubscriptionListResponse getAllSubscription(page, size)
+> SubscriptionListResponse getAllSubscription(page, size, destinationAccount)
 
 Get All Subscription
 
@@ -184,8 +186,9 @@ public class Example {
         SubscriptionApi apiInstance = new SubscriptionApi(defaultClient);
         Integer page = 56; // Integer | 
         Integer size = 56; // Integer | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            SubscriptionListResponse result = apiInstance.getAllSubscription(page, size);
+            SubscriptionListResponse result = apiInstance.getAllSubscription(page, size, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionApi#getAllSubscription");
@@ -205,6 +208,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **Integer**|  | [optional]
  **size** | **Integer**|  | [optional]
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -227,7 +231,7 @@ Name | Type | Description  | Notes
 
 ## getSubscriptionByGid
 
-> SubscriptionResponse getSubscriptionByGid(gid)
+> SubscriptionListResponse getSubscriptionByGid(gid, destinationAccount)
 
 Get Subscription by Gid
 
@@ -255,8 +259,9 @@ public class Example {
 
         SubscriptionApi apiInstance = new SubscriptionApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            SubscriptionResponse result = apiInstance.getSubscriptionByGid(gid);
+            SubscriptionListResponse result = apiInstance.getSubscriptionByGid(gid, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionApi#getSubscriptionByGid");
@@ -275,10 +280,11 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
-[**SubscriptionResponse**](SubscriptionResponse.md)
+[**SubscriptionListResponse**](SubscriptionListResponse.md)
 
 ### Authorization
 

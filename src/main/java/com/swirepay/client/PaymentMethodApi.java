@@ -26,7 +26,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-21T04:14:10.799Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-03-11T05:48:21.646Z[Etc/UTC]")
 @Component("com.swirepay.client.PaymentMethodApi")
 public class PaymentMethodApi {
     private ApiClient apiClient;
@@ -52,23 +52,25 @@ public class PaymentMethodApi {
      * Add Payment Method
      * 
      * <p><b>200</b> - Successful Response
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param paymentMethodRequest  (optional)
      * @return PaymentMethodResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentMethodResponse addPaymentMethod(PaymentMethodRequest paymentMethodRequest) throws RestClientException {
-        return addPaymentMethodWithHttpInfo(paymentMethodRequest).getBody();
+    public PaymentMethodResponse addPaymentMethod(String destinationAccount, PaymentMethodRequest paymentMethodRequest) throws RestClientException {
+        return addPaymentMethodWithHttpInfo(destinationAccount, paymentMethodRequest).getBody();
     }
 
     /**
      * Add Payment Method
      * 
      * <p><b>200</b> - Successful Response
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param paymentMethodRequest  (optional)
      * @return ResponseEntity&lt;PaymentMethodResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentMethodResponse> addPaymentMethodWithHttpInfo(PaymentMethodRequest paymentMethodRequest) throws RestClientException {
+    public ResponseEntity<PaymentMethodResponse> addPaymentMethodWithHttpInfo(String destinationAccount, PaymentMethodRequest paymentMethodRequest) throws RestClientException {
         Object postBody = paymentMethodRequest;
         
         String path = apiClient.expandPath("/payment-method", Collections.<String, Object>emptyMap());
@@ -77,6 +79,9 @@ public class PaymentMethodApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -97,10 +102,11 @@ public class PaymentMethodApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public void deletePaymentMethod(String gid) throws RestClientException {
-        deletePaymentMethodWithHttpInfo(gid);
+    public void deletePaymentMethod(String gid, String destinationAccount) throws RestClientException {
+        deletePaymentMethodWithHttpInfo(gid, destinationAccount);
     }
 
     /**
@@ -108,10 +114,11 @@ public class PaymentMethodApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;Void&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<Void> deletePaymentMethodWithHttpInfo(String gid) throws RestClientException {
+    public ResponseEntity<Void> deletePaymentMethodWithHttpInfo(String gid, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'gid' is set
@@ -129,6 +136,9 @@ public class PaymentMethodApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
+
         final String[] localVarAccepts = {  };
         final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         final String[] contentTypes = {  };
@@ -144,11 +154,12 @@ public class PaymentMethodApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return PaymentMethodResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public PaymentMethodResponse getPaymentMethodByGid(String gid) throws RestClientException {
-        return getPaymentMethodByGidWithHttpInfo(gid).getBody();
+    public PaymentMethodResponse getPaymentMethodByGid(String gid, String destinationAccount) throws RestClientException {
+        return getPaymentMethodByGidWithHttpInfo(gid, destinationAccount).getBody();
     }
 
     /**
@@ -156,10 +167,11 @@ public class PaymentMethodApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;PaymentMethodResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<PaymentMethodResponse> getPaymentMethodByGidWithHttpInfo(String gid) throws RestClientException {
+    public ResponseEntity<PaymentMethodResponse> getPaymentMethodByGidWithHttpInfo(String gid, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'gid' is set
@@ -176,6 +188,9 @@ public class PaymentMethodApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"

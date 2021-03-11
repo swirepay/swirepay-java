@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## addCustomer
 
-> CustomerResponse addCustomer(customerRequest)
+> CustomerResponse addCustomer(customerRequest, destinationAccount)
 
 Add a new customer
 
@@ -42,8 +42,9 @@ public class Example {
 
         CustomerApi apiInstance = new CustomerApi(defaultClient);
         CustomerRequest customerRequest = new CustomerRequest(); // CustomerRequest | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            CustomerResponse result = apiInstance.addCustomer(customerRequest);
+            CustomerResponse result = apiInstance.addCustomer(customerRequest, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomerApi#addCustomer");
@@ -62,6 +63,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customerRequest** | [**CustomerRequest**](CustomerRequest.md)|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -84,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## deleteCustomerByGid
 
-> deleteCustomerByGid(gid)
+> deleteCustomerByGid(gid, destinationAccount)
 
 Delete customer by Gid
 
@@ -112,8 +114,9 @@ public class Example {
 
         CustomerApi apiInstance = new CustomerApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            apiInstance.deleteCustomerByGid(gid);
+            apiInstance.deleteCustomerByGid(gid, destinationAccount);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomerApi#deleteCustomerByGid");
             System.err.println("Status code: " + e.getCode());
@@ -131,6 +134,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -153,7 +157,7 @@ null (empty response body)
 
 ## getAllCustomers
 
-> CustomerListResponse getAllCustomers(page, size)
+> CustomerListResponse getAllCustomers(page, size, destinationAccount)
 
 Get all customers
 
@@ -184,8 +188,9 @@ public class Example {
         CustomerApi apiInstance = new CustomerApi(defaultClient);
         Integer page = 56; // Integer | 
         Integer size = 56; // Integer | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            CustomerListResponse result = apiInstance.getAllCustomers(page, size);
+            CustomerListResponse result = apiInstance.getAllCustomers(page, size, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomerApi#getAllCustomers");
@@ -205,6 +210,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **Integer**|  | [optional]
  **size** | **Integer**|  | [optional]
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -227,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## getCustomerByGid
 
-> CustomerResponse getCustomerByGid(gid)
+> CustomerResponse getCustomerByGid(gid, destinationAccount)
 
 Get Customer by Gid
 
@@ -255,8 +261,9 @@ public class Example {
 
         CustomerApi apiInstance = new CustomerApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            CustomerResponse result = apiInstance.getCustomerByGid(gid);
+            CustomerResponse result = apiInstance.getCustomerByGid(gid, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomerApi#getCustomerByGid");
@@ -275,6 +282,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -297,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## updateCustomer
 
-> CustomerResponse updateCustomer(gid, customerRequest)
+> CustomerResponse updateCustomer(gid, destinationAccount, customerRequest)
 
 Update Customer by Gid
 
@@ -325,9 +333,10 @@ public class Example {
 
         CustomerApi apiInstance = new CustomerApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         CustomerRequest customerRequest = new CustomerRequest(); // CustomerRequest | 
         try {
-            CustomerResponse result = apiInstance.updateCustomer(gid, customerRequest);
+            CustomerResponse result = apiInstance.updateCustomer(gid, destinationAccount, customerRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomerApi#updateCustomer");
@@ -346,6 +355,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
  **customerRequest** | [**CustomerRequest**](CustomerRequest.md)|  | [optional]
 
 ### Return type

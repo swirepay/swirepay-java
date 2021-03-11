@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## addPaymentSession
 
-> PaymentSessionResponse addPaymentSession(paymentSessionRequest)
+> PaymentSessionResponse addPaymentSession(paymentSessionRequest, destinationAccount)
 
 Add a new payment ssession
 
@@ -46,8 +46,9 @@ public class Example {
 
         PaymentSessionApi apiInstance = new PaymentSessionApi(defaultClient);
         PaymentSessionRequest paymentSessionRequest = new PaymentSessionRequest(); // PaymentSessionRequest | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            PaymentSessionResponse result = apiInstance.addPaymentSession(paymentSessionRequest);
+            PaymentSessionResponse result = apiInstance.addPaymentSession(paymentSessionRequest, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentSessionApi#addPaymentSession");
@@ -66,6 +67,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentSessionRequest** | [**PaymentSessionRequest**](PaymentSessionRequest.md)|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -88,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## cancelPaymentSession
 
-> PaymentSessionResponse cancelPaymentSession(gid)
+> PaymentSessionResponse cancelPaymentSession(gid, destinationAccount)
 
 Cancel Payment Session
 
@@ -116,8 +118,9 @@ public class Example {
 
         PaymentSessionApi apiInstance = new PaymentSessionApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            PaymentSessionResponse result = apiInstance.cancelPaymentSession(gid);
+            PaymentSessionResponse result = apiInstance.cancelPaymentSession(gid, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentSessionApi#cancelPaymentSession");
@@ -136,6 +139,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -158,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## capturePaymentSession
 
-> PaymentSessionResponse capturePaymentSession(gid)
+> PaymentSessionResponse capturePaymentSession(gid, destinationAccount)
 
 Capture Payment Session
 
@@ -186,8 +190,9 @@ public class Example {
 
         PaymentSessionApi apiInstance = new PaymentSessionApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            PaymentSessionResponse result = apiInstance.capturePaymentSession(gid);
+            PaymentSessionResponse result = apiInstance.capturePaymentSession(gid, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentSessionApi#capturePaymentSession");
@@ -206,6 +211,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -228,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## confirmPaymentSession
 
-> PaymentSessionResponse confirmPaymentSession(gid, paymentSessionRequest)
+> PaymentSessionResponse confirmPaymentSession(gid, destinationAccount, paymentSessionRequest)
 
 Confirm Payment Session
 
@@ -256,9 +262,10 @@ public class Example {
 
         PaymentSessionApi apiInstance = new PaymentSessionApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         PaymentSessionRequest paymentSessionRequest = new PaymentSessionRequest(); // PaymentSessionRequest | 
         try {
-            PaymentSessionResponse result = apiInstance.confirmPaymentSession(gid, paymentSessionRequest);
+            PaymentSessionResponse result = apiInstance.confirmPaymentSession(gid, destinationAccount, paymentSessionRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentSessionApi#confirmPaymentSession");
@@ -277,6 +284,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
  **paymentSessionRequest** | [**PaymentSessionRequest**](PaymentSessionRequest.md)|  | [optional]
 
 ### Return type
@@ -300,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## getAllPaymentSession
 
-> PaymentSessionListResponse getAllPaymentSession(page, size)
+> PaymentSessionListResponse getAllPaymentSession(page, size, destinationAccount)
 
 Get all payment session
 
@@ -331,8 +339,9 @@ public class Example {
         PaymentSessionApi apiInstance = new PaymentSessionApi(defaultClient);
         Integer page = 56; // Integer | 
         Integer size = 56; // Integer | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            PaymentSessionListResponse result = apiInstance.getAllPaymentSession(page, size);
+            PaymentSessionListResponse result = apiInstance.getAllPaymentSession(page, size, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentSessionApi#getAllPaymentSession");
@@ -352,6 +361,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **Integer**|  | [optional]
  **size** | **Integer**|  | [optional]
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -374,7 +384,7 @@ Name | Type | Description  | Notes
 
 ## getPaymentSessionByGid
 
-> PaymentSessionResponse getPaymentSessionByGid(gid)
+> PaymentSessionResponse getPaymentSessionByGid(gid, destinationAccount)
 
 Get Payment Session by Gid
 
@@ -402,8 +412,9 @@ public class Example {
 
         PaymentSessionApi apiInstance = new PaymentSessionApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            PaymentSessionResponse result = apiInstance.getPaymentSessionByGid(gid);
+            PaymentSessionResponse result = apiInstance.getPaymentSessionByGid(gid, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentSessionApi#getPaymentSessionByGid");
@@ -422,6 +433,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -514,7 +526,7 @@ Name | Type | Description  | Notes
 
 ## refundPaymentSession
 
-> PaymentSessionResponse refundPaymentSession(gid, paymentSessionRequest)
+> PaymentSessionResponse refundPaymentSession(gid, destinationAccount, paymentSessionRequest)
 
 Refund Payment Session
 
@@ -542,9 +554,10 @@ public class Example {
 
         PaymentSessionApi apiInstance = new PaymentSessionApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         PaymentSessionRequest paymentSessionRequest = new PaymentSessionRequest(); // PaymentSessionRequest | 
         try {
-            PaymentSessionResponse result = apiInstance.refundPaymentSession(gid, paymentSessionRequest);
+            PaymentSessionResponse result = apiInstance.refundPaymentSession(gid, destinationAccount, paymentSessionRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentSessionApi#refundPaymentSession");
@@ -563,6 +576,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
  **paymentSessionRequest** | [**PaymentSessionRequest**](PaymentSessionRequest.md)|  | [optional]
 
 ### Return type
@@ -586,7 +600,7 @@ Name | Type | Description  | Notes
 
 ## updatePaymentSession
 
-> PaymentSessionResponse updatePaymentSession(gid, paymentSessionRequest)
+> PaymentSessionResponse updatePaymentSession(gid, destinationAccount, paymentSessionRequest)
 
 Update Payment Session
 
@@ -614,9 +628,10 @@ public class Example {
 
         PaymentSessionApi apiInstance = new PaymentSessionApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         PaymentSessionRequest paymentSessionRequest = new PaymentSessionRequest(); // PaymentSessionRequest | 
         try {
-            PaymentSessionResponse result = apiInstance.updatePaymentSession(gid, paymentSessionRequest);
+            PaymentSessionResponse result = apiInstance.updatePaymentSession(gid, destinationAccount, paymentSessionRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentSessionApi#updatePaymentSession");
@@ -635,6 +650,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
  **paymentSessionRequest** | [**PaymentSessionRequest**](PaymentSessionRequest.md)|  | [optional]
 
 ### Return type

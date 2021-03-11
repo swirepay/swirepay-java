@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## addInvoice
 
-> InvoiceResponse addInvoice(invoiceRequest)
+> InvoiceResponse addInvoice(invoiceRequest, destinationAccount)
 
 Add a new invoice
 
@@ -43,8 +43,9 @@ public class Example {
 
         InvoiceApi apiInstance = new InvoiceApi(defaultClient);
         InvoiceRequest invoiceRequest = new InvoiceRequest(); // InvoiceRequest | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            InvoiceResponse result = apiInstance.addInvoice(invoiceRequest);
+            InvoiceResponse result = apiInstance.addInvoice(invoiceRequest, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InvoiceApi#addInvoice");
@@ -63,6 +64,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoiceRequest** | [**InvoiceRequest**](InvoiceRequest.md)|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -227,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## payInvoice
 
-> InvoiceResponse payInvoice(gid, invoiceRequest)
+> InvoiceResponse payInvoice(gid, destinationAccount, invoiceRequest)
 
 pay for invoice
 
@@ -255,9 +257,10 @@ public class Example {
 
         InvoiceApi apiInstance = new InvoiceApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         InvoiceRequest invoiceRequest = new InvoiceRequest(); // InvoiceRequest | 
         try {
-            InvoiceResponse result = apiInstance.payInvoice(gid, invoiceRequest);
+            InvoiceResponse result = apiInstance.payInvoice(gid, destinationAccount, invoiceRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InvoiceApi#payInvoice");
@@ -276,6 +279,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
  **invoiceRequest** | [**InvoiceRequest**](InvoiceRequest.md)|  | [optional]
 
 ### Return type
@@ -299,7 +303,7 @@ Name | Type | Description  | Notes
 
 ## updateInvoiceActive
 
-> InvoiceResponse updateInvoiceActive(gid, invoiceRequest)
+> InvoiceResponse updateInvoiceActive(gid, destinationAccount, invoiceRequest)
 
 Update invoice to active
 
@@ -327,9 +331,10 @@ public class Example {
 
         InvoiceApi apiInstance = new InvoiceApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         InvoiceRequest invoiceRequest = new InvoiceRequest(); // InvoiceRequest | 
         try {
-            InvoiceResponse result = apiInstance.updateInvoiceActive(gid, invoiceRequest);
+            InvoiceResponse result = apiInstance.updateInvoiceActive(gid, destinationAccount, invoiceRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InvoiceApi#updateInvoiceActive");
@@ -348,6 +353,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
  **invoiceRequest** | [**InvoiceRequest**](InvoiceRequest.md)|  | [optional]
 
 ### Return type
@@ -371,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## updateInvoiceDraft
 
-> InvoiceResponse updateInvoiceDraft(gid, invoiceRequest)
+> InvoiceResponse updateInvoiceDraft(gid, destinationAccount, invoiceRequest)
 
 Update invoice to draft
 
@@ -399,9 +405,10 @@ public class Example {
 
         InvoiceApi apiInstance = new InvoiceApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         InvoiceRequest invoiceRequest = new InvoiceRequest(); // InvoiceRequest | 
         try {
-            InvoiceResponse result = apiInstance.updateInvoiceDraft(gid, invoiceRequest);
+            InvoiceResponse result = apiInstance.updateInvoiceDraft(gid, destinationAccount, invoiceRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InvoiceApi#updateInvoiceDraft");
@@ -420,6 +427,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
  **invoiceRequest** | [**InvoiceRequest**](InvoiceRequest.md)|  | [optional]
 
 ### Return type

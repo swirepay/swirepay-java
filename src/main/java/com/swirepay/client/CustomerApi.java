@@ -27,7 +27,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-21T04:14:10.799Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-03-11T05:48:21.646Z[Etc/UTC]")
 @Component("com.swirepay.client.CustomerApi")
 public class CustomerApi {
     private ApiClient apiClient;
@@ -54,11 +54,12 @@ public class CustomerApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param customerRequest  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return CustomerResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public CustomerResponse addCustomer(CustomerRequest customerRequest) throws RestClientException {
-        return addCustomerWithHttpInfo(customerRequest).getBody();
+    public CustomerResponse addCustomer(CustomerRequest customerRequest, String destinationAccount) throws RestClientException {
+        return addCustomerWithHttpInfo(customerRequest, destinationAccount).getBody();
     }
 
     /**
@@ -66,10 +67,11 @@ public class CustomerApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param customerRequest  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;CustomerResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<CustomerResponse> addCustomerWithHttpInfo(CustomerRequest customerRequest) throws RestClientException {
+    public ResponseEntity<CustomerResponse> addCustomerWithHttpInfo(CustomerRequest customerRequest, String destinationAccount) throws RestClientException {
         Object postBody = customerRequest;
         
         // verify the required parameter 'customerRequest' is set
@@ -83,6 +85,9 @@ public class CustomerApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -103,10 +108,11 @@ public class CustomerApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public void deleteCustomerByGid(String gid) throws RestClientException {
-        deleteCustomerByGidWithHttpInfo(gid);
+    public void deleteCustomerByGid(String gid, String destinationAccount) throws RestClientException {
+        deleteCustomerByGidWithHttpInfo(gid, destinationAccount);
     }
 
     /**
@@ -114,10 +120,11 @@ public class CustomerApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;Void&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<Void> deleteCustomerByGidWithHttpInfo(String gid) throws RestClientException {
+    public ResponseEntity<Void> deleteCustomerByGidWithHttpInfo(String gid, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'gid' is set
@@ -135,6 +142,9 @@ public class CustomerApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
+
         final String[] localVarAccepts = {  };
         final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         final String[] contentTypes = {  };
@@ -151,11 +161,12 @@ public class CustomerApi {
      * <p><b>200</b> - Successful Response
      * @param page  (optional)
      * @param size  (optional)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return CustomerListResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public CustomerListResponse getAllCustomers(Integer page, Integer size) throws RestClientException {
-        return getAllCustomersWithHttpInfo(page, size).getBody();
+    public CustomerListResponse getAllCustomers(Integer page, Integer size, String destinationAccount) throws RestClientException {
+        return getAllCustomersWithHttpInfo(page, size, destinationAccount).getBody();
     }
 
     /**
@@ -164,10 +175,11 @@ public class CustomerApi {
      * <p><b>200</b> - Successful Response
      * @param page  (optional)
      * @param size  (optional)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;CustomerListResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<CustomerListResponse> getAllCustomersWithHttpInfo(Integer page, Integer size) throws RestClientException {
+    public ResponseEntity<CustomerListResponse> getAllCustomersWithHttpInfo(Integer page, Integer size, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         String path = apiClient.expandPath("/customer", Collections.<String, Object>emptyMap());
@@ -179,6 +191,9 @@ public class CustomerApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "size", size));
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -197,11 +212,12 @@ public class CustomerApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return CustomerResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public CustomerResponse getCustomerByGid(String gid) throws RestClientException {
-        return getCustomerByGidWithHttpInfo(gid).getBody();
+    public CustomerResponse getCustomerByGid(String gid, String destinationAccount) throws RestClientException {
+        return getCustomerByGidWithHttpInfo(gid, destinationAccount).getBody();
     }
 
     /**
@@ -209,10 +225,11 @@ public class CustomerApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;CustomerResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<CustomerResponse> getCustomerByGidWithHttpInfo(String gid) throws RestClientException {
+    public ResponseEntity<CustomerResponse> getCustomerByGidWithHttpInfo(String gid, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'gid' is set
@@ -229,6 +246,9 @@ public class CustomerApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -247,12 +267,13 @@ public class CustomerApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param customerRequest  (optional)
      * @return CustomerResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public CustomerResponse updateCustomer(String gid, CustomerRequest customerRequest) throws RestClientException {
-        return updateCustomerWithHttpInfo(gid, customerRequest).getBody();
+    public CustomerResponse updateCustomer(String gid, String destinationAccount, CustomerRequest customerRequest) throws RestClientException {
+        return updateCustomerWithHttpInfo(gid, destinationAccount, customerRequest).getBody();
     }
 
     /**
@@ -260,11 +281,12 @@ public class CustomerApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param customerRequest  (optional)
      * @return ResponseEntity&lt;CustomerResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<CustomerResponse> updateCustomerWithHttpInfo(String gid, CustomerRequest customerRequest) throws RestClientException {
+    public ResponseEntity<CustomerResponse> updateCustomerWithHttpInfo(String gid, String destinationAccount, CustomerRequest customerRequest) throws RestClientException {
         Object postBody = customerRequest;
         
         // verify the required parameter 'gid' is set
@@ -281,6 +303,9 @@ public class CustomerApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"

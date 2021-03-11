@@ -27,7 +27,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-21T04:14:10.799Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-03-11T05:48:21.646Z[Etc/UTC]")
 @Component("com.swirepay.client.SubscriptionApi")
 public class SubscriptionApi {
     private ApiClient apiClient;
@@ -103,12 +103,13 @@ public class SubscriptionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param subscriptionRequest  (optional)
      * @return SubscriptionResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public SubscriptionResponse cancelSubscription(String gid, SubscriptionRequest subscriptionRequest) throws RestClientException {
-        return cancelSubscriptionWithHttpInfo(gid, subscriptionRequest).getBody();
+    public SubscriptionResponse cancelSubscription(String gid, String destinationAccount, SubscriptionRequest subscriptionRequest) throws RestClientException {
+        return cancelSubscriptionWithHttpInfo(gid, destinationAccount, subscriptionRequest).getBody();
     }
 
     /**
@@ -116,11 +117,12 @@ public class SubscriptionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param subscriptionRequest  (optional)
      * @return ResponseEntity&lt;SubscriptionResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<SubscriptionResponse> cancelSubscriptionWithHttpInfo(String gid, SubscriptionRequest subscriptionRequest) throws RestClientException {
+    public ResponseEntity<SubscriptionResponse> cancelSubscriptionWithHttpInfo(String gid, String destinationAccount, SubscriptionRequest subscriptionRequest) throws RestClientException {
         Object postBody = subscriptionRequest;
         
         // verify the required parameter 'gid' is set
@@ -137,6 +139,9 @@ public class SubscriptionApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -158,11 +163,12 @@ public class SubscriptionApi {
      * <p><b>200</b> - Successful Response
      * @param page  (optional)
      * @param size  (optional)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return SubscriptionListResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public SubscriptionListResponse getAllSubscription(Integer page, Integer size) throws RestClientException {
-        return getAllSubscriptionWithHttpInfo(page, size).getBody();
+    public SubscriptionListResponse getAllSubscription(Integer page, Integer size, String destinationAccount) throws RestClientException {
+        return getAllSubscriptionWithHttpInfo(page, size, destinationAccount).getBody();
     }
 
     /**
@@ -171,10 +177,11 @@ public class SubscriptionApi {
      * <p><b>200</b> - Successful Response
      * @param page  (optional)
      * @param size  (optional)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;SubscriptionListResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<SubscriptionListResponse> getAllSubscriptionWithHttpInfo(Integer page, Integer size) throws RestClientException {
+    public ResponseEntity<SubscriptionListResponse> getAllSubscriptionWithHttpInfo(Integer page, Integer size, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         String path = apiClient.expandPath("/subscription", Collections.<String, Object>emptyMap());
@@ -186,6 +193,9 @@ public class SubscriptionApi {
 
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "page", page));
         queryParams.putAll(apiClient.parameterToMultiValueMap(null, "size", size));
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -204,11 +214,12 @@ public class SubscriptionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
-     * @return SubscriptionResponse
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
+     * @return SubscriptionListResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public SubscriptionResponse getSubscriptionByGid(String gid) throws RestClientException {
-        return getSubscriptionByGidWithHttpInfo(gid).getBody();
+    public SubscriptionListResponse getSubscriptionByGid(String gid, String destinationAccount) throws RestClientException {
+        return getSubscriptionByGidWithHttpInfo(gid, destinationAccount).getBody();
     }
 
     /**
@@ -216,10 +227,11 @@ public class SubscriptionApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
-     * @return ResponseEntity&lt;SubscriptionResponse&gt;
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
+     * @return ResponseEntity&lt;SubscriptionListResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<SubscriptionResponse> getSubscriptionByGidWithHttpInfo(String gid) throws RestClientException {
+    public ResponseEntity<SubscriptionListResponse> getSubscriptionByGidWithHttpInfo(String gid, String destinationAccount) throws RestClientException {
         Object postBody = null;
         
         // verify the required parameter 'gid' is set
@@ -237,6 +249,9 @@ public class SubscriptionApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
+
         final String[] localVarAccepts = { 
             "application/json"
          };
@@ -246,7 +261,7 @@ public class SubscriptionApi {
 
         String[] authNames = new String[] { "api_key" };
 
-        ParameterizedTypeReference<SubscriptionResponse> returnType = new ParameterizedTypeReference<SubscriptionResponse>() {};
+        ParameterizedTypeReference<SubscriptionListResponse> returnType = new ParameterizedTypeReference<SubscriptionListResponse>() {};
         return apiClient.invokeAPI(path, HttpMethod.GET, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, contentType, authNames, returnType);
     }
 }

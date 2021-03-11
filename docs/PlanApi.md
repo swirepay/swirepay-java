@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## getAllPlan
 
-> PlanListResponse getAllPlan(page, size)
+> PlanListResponse getAllPlan(page, size, destinationAccount)
 
 Get All Plan
 
@@ -112,8 +112,9 @@ public class Example {
         PlanApi apiInstance = new PlanApi(defaultClient);
         Integer page = 56; // Integer | 
         Integer size = 56; // Integer | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            PlanListResponse result = apiInstance.getAllPlan(page, size);
+            PlanListResponse result = apiInstance.getAllPlan(page, size, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PlanApi#getAllPlan");
@@ -133,6 +134,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **Integer**|  | [optional]
  **size** | **Integer**|  | [optional]
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -155,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## getplanByGid
 
-> PlanResponse getplanByGid(gid)
+> PlanResponse getplanByGid(gid, destinationAccount)
 
 Get Plan by Gid
 
@@ -183,8 +185,9 @@ public class Example {
 
         PlanApi apiInstance = new PlanApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            PlanResponse result = apiInstance.getplanByGid(gid);
+            PlanResponse result = apiInstance.getplanByGid(gid, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PlanApi#getplanByGid");
@@ -203,6 +206,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -225,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## updatePlan
 
-> PlanResponse updatePlan(gid, planRequest)
+> PlanResponse updatePlan(gid, destinationAccount, planRequest)
 
 Update Plan
 
@@ -253,9 +257,10 @@ public class Example {
 
         PlanApi apiInstance = new PlanApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         PlanRequest planRequest = new PlanRequest(); // PlanRequest | 
         try {
-            PlanResponse result = apiInstance.updatePlan(gid, planRequest);
+            PlanResponse result = apiInstance.updatePlan(gid, destinationAccount, planRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PlanApi#updatePlan");
@@ -274,6 +279,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
  **planRequest** | [**PlanRequest**](PlanRequest.md)|  | [optional]
 
 ### Return type

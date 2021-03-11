@@ -27,7 +27,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-02-21T04:14:10.799Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-03-11T05:48:21.646Z[Etc/UTC]")
 @Component("com.swirepay.client.InvoiceApi")
 public class InvoiceApi {
     private ApiClient apiClient;
@@ -54,11 +54,12 @@ public class InvoiceApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param invoiceRequest  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return InvoiceResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public InvoiceResponse addInvoice(InvoiceRequest invoiceRequest) throws RestClientException {
-        return addInvoiceWithHttpInfo(invoiceRequest).getBody();
+    public InvoiceResponse addInvoice(InvoiceRequest invoiceRequest, String destinationAccount) throws RestClientException {
+        return addInvoiceWithHttpInfo(invoiceRequest, destinationAccount).getBody();
     }
 
     /**
@@ -66,10 +67,11 @@ public class InvoiceApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param invoiceRequest  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @return ResponseEntity&lt;InvoiceResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<InvoiceResponse> addInvoiceWithHttpInfo(InvoiceRequest invoiceRequest) throws RestClientException {
+    public ResponseEntity<InvoiceResponse> addInvoiceWithHttpInfo(InvoiceRequest invoiceRequest, String destinationAccount) throws RestClientException {
         Object postBody = invoiceRequest;
         
         // verify the required parameter 'invoiceRequest' is set
@@ -83,6 +85,9 @@ public class InvoiceApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"
@@ -200,12 +205,13 @@ public class InvoiceApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param invoiceRequest  (optional)
      * @return InvoiceResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public InvoiceResponse payInvoice(String gid, InvoiceRequest invoiceRequest) throws RestClientException {
-        return payInvoiceWithHttpInfo(gid, invoiceRequest).getBody();
+    public InvoiceResponse payInvoice(String gid, String destinationAccount, InvoiceRequest invoiceRequest) throws RestClientException {
+        return payInvoiceWithHttpInfo(gid, destinationAccount, invoiceRequest).getBody();
     }
 
     /**
@@ -213,11 +219,12 @@ public class InvoiceApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param invoiceRequest  (optional)
      * @return ResponseEntity&lt;InvoiceResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<InvoiceResponse> payInvoiceWithHttpInfo(String gid, InvoiceRequest invoiceRequest) throws RestClientException {
+    public ResponseEntity<InvoiceResponse> payInvoiceWithHttpInfo(String gid, String destinationAccount, InvoiceRequest invoiceRequest) throws RestClientException {
         Object postBody = invoiceRequest;
         
         // verify the required parameter 'gid' is set
@@ -235,6 +242,9 @@ public class InvoiceApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
+
         final String[] localVarAccepts = { 
             "application/json"
          };
@@ -254,12 +264,13 @@ public class InvoiceApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param invoiceRequest  (optional)
      * @return InvoiceResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public InvoiceResponse updateInvoiceActive(String gid, InvoiceRequest invoiceRequest) throws RestClientException {
-        return updateInvoiceActiveWithHttpInfo(gid, invoiceRequest).getBody();
+    public InvoiceResponse updateInvoiceActive(String gid, String destinationAccount, InvoiceRequest invoiceRequest) throws RestClientException {
+        return updateInvoiceActiveWithHttpInfo(gid, destinationAccount, invoiceRequest).getBody();
     }
 
     /**
@@ -267,11 +278,12 @@ public class InvoiceApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param invoiceRequest  (optional)
      * @return ResponseEntity&lt;InvoiceResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<InvoiceResponse> updateInvoiceActiveWithHttpInfo(String gid, InvoiceRequest invoiceRequest) throws RestClientException {
+    public ResponseEntity<InvoiceResponse> updateInvoiceActiveWithHttpInfo(String gid, String destinationAccount, InvoiceRequest invoiceRequest) throws RestClientException {
         Object postBody = invoiceRequest;
         
         // verify the required parameter 'gid' is set
@@ -289,6 +301,9 @@ public class InvoiceApi {
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
 
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
+
         final String[] localVarAccepts = { 
             "application/json"
          };
@@ -308,12 +323,13 @@ public class InvoiceApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param invoiceRequest  (optional)
      * @return InvoiceResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public InvoiceResponse updateInvoiceDraft(String gid, InvoiceRequest invoiceRequest) throws RestClientException {
-        return updateInvoiceDraftWithHttpInfo(gid, invoiceRequest).getBody();
+    public InvoiceResponse updateInvoiceDraft(String gid, String destinationAccount, InvoiceRequest invoiceRequest) throws RestClientException {
+        return updateInvoiceDraftWithHttpInfo(gid, destinationAccount, invoiceRequest).getBody();
     }
 
     /**
@@ -321,11 +337,12 @@ public class InvoiceApi {
      * 
      * <p><b>200</b> - Successful Response
      * @param gid  (required)
+     * @param destinationAccount If processing on behalf of another Swirepay affiliate account (optional)
      * @param invoiceRequest  (optional)
      * @return ResponseEntity&lt;InvoiceResponse&gt;
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
-    public ResponseEntity<InvoiceResponse> updateInvoiceDraftWithHttpInfo(String gid, InvoiceRequest invoiceRequest) throws RestClientException {
+    public ResponseEntity<InvoiceResponse> updateInvoiceDraftWithHttpInfo(String gid, String destinationAccount, InvoiceRequest invoiceRequest) throws RestClientException {
         Object postBody = invoiceRequest;
         
         // verify the required parameter 'gid' is set
@@ -342,6 +359,9 @@ public class InvoiceApi {
         final HttpHeaders headerParams = new HttpHeaders();
         final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        if (destinationAccount != null)
+        headerParams.add("destination_account", apiClient.parameterToString(destinationAccount));
 
         final String[] localVarAccepts = { 
             "application/json"

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## addPaymentMethod
 
-> PaymentMethodResponse addPaymentMethod(paymentMethodRequest)
+> PaymentMethodResponse addPaymentMethod(destinationAccount, paymentMethodRequest)
 
 Add Payment Method
 
@@ -39,9 +39,10 @@ public class Example {
         //api_key.setApiKeyPrefix("Token");
 
         PaymentMethodApi apiInstance = new PaymentMethodApi(defaultClient);
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         PaymentMethodRequest paymentMethodRequest = new PaymentMethodRequest(); // PaymentMethodRequest | 
         try {
-            PaymentMethodResponse result = apiInstance.addPaymentMethod(paymentMethodRequest);
+            PaymentMethodResponse result = apiInstance.addPaymentMethod(destinationAccount, paymentMethodRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentMethodApi#addPaymentMethod");
@@ -59,6 +60,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
  **paymentMethodRequest** | [**PaymentMethodRequest**](PaymentMethodRequest.md)|  | [optional]
 
 ### Return type
@@ -82,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## deletePaymentMethod
 
-> deletePaymentMethod(gid)
+> deletePaymentMethod(gid, destinationAccount)
 
 Delete Payment Method
 
@@ -110,8 +112,9 @@ public class Example {
 
         PaymentMethodApi apiInstance = new PaymentMethodApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            apiInstance.deletePaymentMethod(gid);
+            apiInstance.deletePaymentMethod(gid, destinationAccount);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentMethodApi#deletePaymentMethod");
             System.err.println("Status code: " + e.getCode());
@@ -129,6 +132,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
@@ -151,7 +155,7 @@ null (empty response body)
 
 ## getPaymentMethodByGid
 
-> PaymentMethodResponse getPaymentMethodByGid(gid)
+> PaymentMethodResponse getPaymentMethodByGid(gid, destinationAccount)
 
 Get Payment Method by Gid
 
@@ -179,8 +183,9 @@ public class Example {
 
         PaymentMethodApi apiInstance = new PaymentMethodApi(defaultClient);
         String gid = "gid_example"; // String | 
+        String destinationAccount = "destinationAccount_example"; // String | If processing on behalf of another Swirepay affiliate account
         try {
-            PaymentMethodResponse result = apiInstance.getPaymentMethodByGid(gid);
+            PaymentMethodResponse result = apiInstance.getPaymentMethodByGid(gid, destinationAccount);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PaymentMethodApi#getPaymentMethodByGid");
@@ -199,6 +204,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gid** | **String**|  |
+ **destinationAccount** | **String**| If processing on behalf of another Swirepay affiliate account | [optional]
 
 ### Return type
 
