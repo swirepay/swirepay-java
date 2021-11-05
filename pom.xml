@@ -5,7 +5,7 @@
     <artifactId>swirepay-java</artifactId>
     <packaging>jar</packaging>
     <name>swirepay-java</name>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>OpenAPI Java</description>
     <scm>
